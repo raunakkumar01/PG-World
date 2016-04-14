@@ -16,7 +16,7 @@ String lng=request.getParameter("lng");
 String unm=session.getAttribute("mail").toString();
 int ww=UserManager.reghouse(unm, address, city, pin, lat, lng);
 if (ww==1)
-{
+{   request.getSession().setAttribute("adrs", address);
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("singup_houseowner2.jsp");
 }

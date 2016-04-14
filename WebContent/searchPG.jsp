@@ -103,7 +103,7 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-               <a class="mdl-navigation__link" href="" style="color:white">Home</a>
+               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>
                  
             </nav>
          </div>

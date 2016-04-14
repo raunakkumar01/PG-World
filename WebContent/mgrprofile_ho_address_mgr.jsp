@@ -14,10 +14,12 @@ String pin= request.getParameter("pin");
 String lat= request.getParameter("lt");
 String lng=request.getParameter("lng");
 String unm=session.getAttribute("mail").toString();
+
 int ww=PGManager.createPG1(unm, address, city, pin, lat, lng);
 if (ww==1)
 {
 	request.getSession().setAttribute("mail", unm);
+	request.getSession().setAttribute("adrs", address);
 	response.sendRedirect("mgrprofile_ho_facilities.jsp");
 }
 else if(ww==0 || ww==10)

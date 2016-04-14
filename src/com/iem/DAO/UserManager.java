@@ -104,10 +104,10 @@ public class UserManager {
 		return 0;
 	}
 	
-	public static int register_houseowner(String unm,String pg_for,String tv,String ac,String food,String wifi,String b1,String p1,String b2,String p2,String b3,String p3){
+	public static int register_houseowner(String adrs,String unm,String pg_for,String tv,String ac,String food,String wifi,String b1,String p1,String b2,String p2,String b3,String p3){
 		try{
 			Connection con=ConnectionFact.dbConnect();
-			String stquery="UPDATE PG SET PG_FOR=?,TV=?,AC=?,FOOD=?,WIFI=?,B1=?,P1=?,B2=?,P2=?,B3=?,P3=? where OWNERUNM=?";
+			String stquery="UPDATE PG SET PG_FOR=?,TV=?,AC=?,FOOD=?,WIFI=?,B1=?,P1=?,B2=?,P2=?,B3=?,P3=? where OWNERUNM=? AND ADDRESS=?";
 			PreparedStatement pst1=con.prepareStatement(stquery);
 			System.out.println("hi from dao"+unm);
 			pst1.setString(1, pg_for);
@@ -122,6 +122,7 @@ public class UserManager {
 			pst1.setString(10, b3);
 			pst1.setString(11, p3); 
 			pst1.setString(12, unm);
+			pst1.setString(13, adrs);
 			int val=pst1.executeUpdate();
 			if(val>0)
 				return 1;

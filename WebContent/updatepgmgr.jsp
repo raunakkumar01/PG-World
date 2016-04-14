@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+<% 
+String pgg=session.getAttribute("pgid").toString();
 String unm=session.getAttribute("mail").toString();
 String tv="false";
 String ac="false";
@@ -38,21 +39,18 @@ String b3=request.getParameter("b3");
 String p1=request.getParameter("p1");
 String p2=request.getParameter("p2");
 String p3=request.getParameter("p3");
-String ad=session.getAttribute("adrs").toString();
-%>
-
-<%
-int val=PGManager.createPG3(ad,unm,gender, tv, ac, food, wifi, b1, p1 , b2, p2, b3, p3);
+int val=PGManager.updatePG(pgg,unm,gender, tv, ac, food, wifi, b1, p1 , b2, p2, b3, p3);
 if(val==1){
-	session.removeAttribute("adrs");
+	session.removeAttribute("pgid");
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("manageprofile_houseowner.jsp");
+	
           }
 else if(val==2){
+	session.removeAttribute("pgid");
 	request.getSession().setAttribute("mail", unm);
-	response.sendRedirect("mgrprofile_ho_facilities.jsp");	
+	response.sendRedirect("PGMgr.jsp");	
    }
 %>
-
 </body>
 </html>
