@@ -112,10 +112,15 @@
 	  
 	  <main class="mdl-layout__content">
 	  
-	   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left:35em;">
-        <input class="mdl-textfield__input" type="text" id="sample1" name="clgnm">
-        <label class="mdl-textfield__label" for="sample1">College name</label>
-       </div>
+	   <div style="margin-left: 40em;"><p style="font-weight: bold;">College names:</p><input type="text" list="colleges" />
+	   <datalist id="colleges">
+       <option value="IEM">IEM</option>
+       <option value="Heritage">Heritage</option>
+       <option value="Techno">Techno</option>
+       <option value="BP Poddar">BP Poddar</option>
+       <option value="Meghnad Saha">Meghnad Saha</option>
+       </datalist> 
+        </div>
 	   <table style="margin-left:40em;">
 	   <tr>
 	   <td>
