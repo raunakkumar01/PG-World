@@ -1,7 +1,9 @@
 package com.iem.DAO;
+import com.iem.BEAN.PGIndex;
 import com.iem.ConnectionFactory.ConnectionFact;
-import java.sql.*;
 
+import java.sql.*;
+import java.util.ArrayList;
 public class UserManager {
 	
 	
@@ -148,6 +150,24 @@ public class UserManager {
 		}
 		catch(Exception es){}
 	return 0;
+	}
+	
+	public static ArrayList<PGIndex> getPGNames(String unm)
+	{
+		ArrayList<PGIndex> ne=new ArrayList<PGIndex>();
+		try{
+	    Connection con=ConnectionFact.dbConnect();
+		String sq="Select * from PG where OWNERUNM=?";
+		PreparedStatement pst2=con.prepareStatement(sq);
+		pst2.setString(1, unm);
+		ResultSet rs;
+		rs=pst2.executeQuery();
+		while(rs.next())
+		{
+			ne.add(new PGIndex(rs.getInt("PGID"),rs.getString("ADDRESS")));
+		}
+		}catch(Exception s){}
+		return ne;
 	}
 }
 		

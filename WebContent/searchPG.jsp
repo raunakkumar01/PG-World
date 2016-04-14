@@ -118,7 +118,7 @@
        <option value="Heritage">Heritage</option>
        <option value="Techno">Techno</option>
        <option value="BP Poddar">BP Poddar</option>
-       <option value="Meghnad Saha">Meghnad Saha</option>
+       <option value="Meghnad Saha Institue of Technology">Meghnad Saha Institue of Technology</option>
        </datalist> 
         </div>
 	   <table style="margin-left:40em;">

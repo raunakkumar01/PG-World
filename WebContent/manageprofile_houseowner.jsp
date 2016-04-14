@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" %>
+    pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" 
+    import="com.iem.DAO.UserManager" import="com.iem.BEAN.PGIndex" import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,111 +76,17 @@ while(rs1.next())
   </div>
   </div>
 	</section>
-	
-	<form action="#">
-	        <div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col">
-            <ul>
-			<li>           
-		    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-top: 50px;">
-               <input class="mdl-textfield__input" type="text" id="text4">
-               <label class="mdl-textfield__label" for="text4">Address line 1</label>
-            </div>
-			</li>
-			<li>
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" id="text5">
-               <label class="mdl-textfield__label" for="text5">Address line 2</label>
-            </div>
-            </li>
-			<li>
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" id="text6">
-               <label class="mdl-textfield__label" for="text6">City</label>
-            </div>
-            </li>
-			<li>
-			 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text2">
-               <label class="mdl-textfield__label" for="text2">Pincode</label>
-			   <span class="mdl-textfield__error">Number required!</span>
-            </div>
-			</li>
-			<li> PG for:
-			 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
-            <input type="radio" id="option2" name="gender" class="mdl-radio__button" >
-            <span class="mdl-radio__label">Female</span>
-         </label>
-		  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
-            <input type="radio" id="option1" name="gender" class="mdl-radio__button" >
-            <span class="mdl-radio__label">Male</span>
-         </label>
-			</li>
-			</ul>
-			</div>
-			  <div class="mdl-cell mdl-cell--4-col">
-         <table class="mdl-data-table mdl-js-data-table" style="margin-top: 80px; margin-left: 10px;">
-  <thead>
-    <tr>
-      <th>No of Occupancy</th>
-      <th>Available beds</th>
-      <th>Cost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td><input type="text"  style="width:30px;"></td>
-      <td><input type="text"  style="width: 50px;"></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><input type="text" style="width: 30px;"></td>
-      <td><input type="text" style="width: 50px;"></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><input type="text"  style="width: 30px;"></td>
-      <td><input type="text"  style="width: 50px;"></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-			<div class="mdl-cell mdl-cell--4-col" style="margin-top: 100px;">
-			 <p style="font-size: 15px; font-weight: bold;">Facilities provided:</p>
-			 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-            <input type="checkbox" id="switch-2" class="mdl-switch__input">   
-			<span class="mdl-checkbox__label">&nbsp;&nbsp;Food Facility</span>        
-         </label>
-		    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
-            <input type="checkbox" id="switch-3" class="mdl-switch__input">   
-			<span class="mdl-checkbox__label">&nbsp;&nbsp;WiFi</span>        
-         </label>
-		 	 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
-            <input type="checkbox" id="switch-4" class="mdl-switch__input">   
-			<span class="mdl-checkbox__label">&nbsp;&nbsp;TV</span>        
-         </label>
-		 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
-            <input type="checkbox" id="switch-5" class="mdl-switch__input">   
-			<span class="mdl-checkbox__label">&nbsp;&nbsp;AC</span>        
-         </label> 
-         </div>
-         
-
-
-			
-			</div>
 			<!-- Accent-colored raised button -->
+<form action="mgrprofile_ho_address.jsp" method="post">
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">
-  ADD/UPDATE PG DETAILS
+  ADD PG DETAILS
 </button>
+</form>
+<form action="post">
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 42em; margin-top: 10px;">
   VERIFY STUDENT
 </button>
-
-			
-			
-          </form>
+</form>
           
           <h3 style="margin-left: 450px;">List of Already added PGs</h3>
           
@@ -192,19 +99,20 @@ while(rs1.next())
     </tr>
   </thead>
   <tbody>
+  <%int i=0;
+  ArrayList<PGIndex>rb=UserManager.getPGNames(unm); 
+  for(i=0;i<rb.size();i++){
+  %>
     <tr>
-      <td>001</td>
-      <td class="mdl-data-table__cell--non-numeric">E-14, Karunamoyee</td>
-      
-      <td class="mdl-data-table__cell--non-numeric"><a href="pg001.html">pg001</a></td>
+    <form action="PGMgr.jsp" method="post">
+      <td><input type="text" name="pgd" value=<%=rb.get(i).getPgid()%> /></td>
+      <td><%=rb.get(i).getAddress()%></td>
+      <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  EDIT DETAILS
+</button></td>
+      </form>
     </tr>
-    <tr>
-      <td>002</td>
-      <td class="mdl-data-table__cell--non-numeric">S-14, Beliaghata</td>
-      
-      <td class="mdl-data-table__cell--non-numeric"><a href="pg001.html">pg002</a></td>
-    </tr>
-    
+    <%} %>
   </tbody>
 </table>
 <footer class="mdl-mini-footer">
