@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" import="java.util.ArrayList"
 import= "java.util.Collections" import="com.iem.DAO.UserManager"  %>
+<%-- 
+  - Author: Shamik Kundu
+  - Description: this page will redirect the houseowner to either manageprofile page or to the same page 
+                 based upon successful/unsuccessful entry in the database.
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

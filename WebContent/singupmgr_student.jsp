@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" import="com.iem.DAO.UserManager" %>
+    pageEncoding="ISO-8859-1"  import="com.iem.DAO.UserManager" %>
+<%-- 
+  - Author: Shamik Kundu
+  - Description: this page will redirect the student to either homepage or to the same page based upon
+                 successful/unsuccessful database entry.
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,27 +38,6 @@ else if(ee==2)
     response.sendRedirect("signup_student.jsp");
 	
 }
-// String stquery="UPDATE PG_STUDENT SET GENDER=?,DOB=?,ADDRESS=?,COLLEGE_NAME=? where USERNAME=?";
-/* PreparedStatement pst=con.prepareStatement(stquery);
-pst.setString(1, gender);
-pst.setString(2, dob);
-pst.setString(3, address);
-pst.setString(4, clgname);
-pst.setString(5, unm);
-int val2=pst.executeUpdate();
-if(val2>0)
-{
-	request.getSession().setAttribute("mail", unm);
-	System.out.println("success");
-	response.sendRedirect("Home.jsp");
-}
-else
-{
-	request.getSession().setAttribute("mail", unm);
-	System.out.println("Renter Details");
-	response.sendRedirect("signup_student.jsp");
-}
-*/
 
 %>
 </body>

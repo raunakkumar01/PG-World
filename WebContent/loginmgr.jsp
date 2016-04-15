@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" import="com.iem.DAO.UserManager" %>
+    pageEncoding="ISO-8859-1"  import="com.iem.DAO.UserManager" %>
+<%-- 
+  - Author: Shamik Kundu
+  - Description: redirects houseowner and student to their respective landing pages when they are logged in
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,9 +14,6 @@
 <%
 String mail=request.getParameter("mail");
 String pwd=request.getParameter("pwd");
-Connection con=ConnectionFact.dbConnect();
-// String stquery2="SELECT PWD,CATEGORY FROM PG_USER WHERE USERNAME=?";
-//UserManager usr=new UserManager();
 String r=UserManager.authenticate(mail, pwd);
 if(r.equalsIgnoreCase("HOUSE"))
 {

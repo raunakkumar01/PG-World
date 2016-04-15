@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" 
     import="com.iem.DAO.UserManager" import="com.iem.BEAN.PGIndex" import="java.util.ArrayList"%>
+    <%-- 
+  - Author: Shamik Kundu
+  - Description: landing page of houseowner after logging in where he/she can see the list of his already added PGs.
+                 Houseowner also gets the option to add a new PG and verify students who are staying at his/her PG.
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,7 +63,7 @@ while(rs1.next())
             <!-- Navigation -->
             <nav class="mdl-navigation">
                <form action="gotohome.jsp" method="post"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">HOME</button></form>
-               <a class="mdl-navigation__link" href="" style="color:white">About</a>      
+      
             </nav>
          </div>
       </header>

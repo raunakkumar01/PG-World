@@ -5,7 +5,14 @@ import java.util.ArrayList;
 import com.iem.BEAN.PG;
 import com.iem.BEAN.PGIndex;
 import com.iem.ConnectionFactory.ConnectionFact;
-
+/*
+ * Author: Shamik Kundu
+ * Description: this class provides functions to perform the following operations:
+ * 1. Add a new PG from manageprofile page of houseowner.
+ * 2. Update an existing PG.
+ * 3. Get details of an already added PG. 
+ */
+ 
 public class PGManager {
 	
 	public static int createPG1(String unm,String address,String city,String pin, String lat, String longi)

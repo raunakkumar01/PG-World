@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  import="com.iem.DAO.PGManager" %>
+    <%-- 
+  - Author: Shamik Kundu
+  - Description: redirects houseowner to either a page where he can add further details or redirects him back to same
+                 page based upon successful/unsuccessful database entry
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

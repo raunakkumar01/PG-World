@@ -5,7 +5,12 @@ import com.iem.ConnectionFactory.ConnectionFact;
 import java.sql.*;
 import java.util.ArrayList;
 public class UserManager {
-	
+	/*
+	 * Author: Shamik Kundu
+	 * Description: this class provides functions to perform the following operations:
+	 * 1. Registration
+	 * 2. Login
+	 */
 	
 	public static String authenticate(String mail,String pwd){
 		String house="HOUSE";

@@ -2,6 +2,11 @@
     pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" 
     import="com.iem.BEAN.PG" import="java.util.ArrayList" import="com.iem.DAO.PGManager"
     %>
+    <%-- 
+  - Author: Shamik Kundu
+  - Description: In this page houseowner can update the details of a specific PG that is already present in
+                 his list of added PGs.
+  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

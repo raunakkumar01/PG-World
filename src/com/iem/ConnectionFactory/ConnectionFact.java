@@ -2,7 +2,11 @@ package com.iem.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+/*
+ * Author: Shamik Kundu
+ * Description: this class provides functions to perform the following operations:
+ * 1. Creating a connection to database and return the connection object.
+ */
 public class ConnectionFact {
 	static	Connection con;
 	   
