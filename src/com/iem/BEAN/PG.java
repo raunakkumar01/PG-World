@@ -1,5 +1,11 @@
 package com.iem.BEAN;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.iem.ConnectionFactory.ConnectionFact;
+
 public class PG {
 private int PGID;
 private String OwnerUnm;
@@ -154,5 +160,21 @@ public void setP3(String p3) {
 	this.p3 = p3;
 }
 
+public static PG getPG(int pgid)
+{
+	try{
+		Connection con=ConnectionFact.dbConnect();
+		String stquery = "Select * from PG where PGID=?";
+		PreparedStatement pst=con.prepareStatement(stquery);
+		pst.setInt(1, pgid);
+		ResultSet rs=pst.executeQuery();
+		PG p=null;
+		if(rs.next())
+		 p=new PG(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18));	
+		return p;
+	}
+	catch(Exception es){return null;}
+	
+}
 
 }

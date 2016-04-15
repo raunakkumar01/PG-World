@@ -24,7 +24,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
    		
-		<%if(!(null == session.getAttribute("alpg")))
+		<%ArrayList<PG> alpg= (ArrayList)session.getAttribute("alpg");
+		if(!(null == session.getAttribute("alpg")))
         {
 		      	 System.out.println("Printing hostels");
 		      	String adrs="";
@@ -45,18 +46,40 @@
 			    var lng1;
 			   
 			    
-			      
-			      function placeMarker(location) {
+			    var prev_infowindow=null;
+			      function placeMarker(location,pgref) {
 			    	  var marker = new google.maps.Marker({
 			    	    position: location,
 			    	    map: map,
 			    	  });
 			    	  var infowindow = new google.maps.InfoWindow({
-			    	    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+			    		  
+			    	    content: 'PGID: '+pgref+
+			    	    			'<form action="PGDetailsMgr.jsp" method="post"><input type="hidden" id="pgid" name="pgid">'+  
+									'<input type="submit" value="Show Details" /></form>	'
+			    	    	//'<form action="PGDetailsMgr.jsp" method="post"><input type="text" id="pgref" value="'+pgref+'"/><button >SeeDetails</button></form>'
+							// '<a href="PGDetails.jsp">See Details</a>'//'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
 			    	  });
-			    	  infowindow.open(map,marker);
+			    	  //infowindow.open(map,marker);
+			    	  
+			    	  //to see if the marker is clicked
+			    	  
+			    	  google.maps.event.addListener(marker, 'mouseover', function () {
+			    		  if( prev_infowindow ) {
+			    	           prev_infowindow.close();
+			    	        }
+
+			    	       prev_infowindow = infowindow;
+			    		  infowindow.open(map,marker);
+			    		  document.getElementById("pgid").value=pgref;
+			            });
+			    	  
 			    	}
 			      
+			      
+			     
+			      
+			      //to place markers at ever location of pg
 			   function doshow(){
 				   var inp=document.getElementById("myInput").value;
 				   var res = inp.split("$");
@@ -66,10 +89,11 @@
 					   console.log(ll);
 					   var lat1=ll[0];
 					   var lon1=ll[1];
+					   var pgref=ll[2];
 					   //var coords= new google.maps.LatLng(22.574470, 88.433813);
 					   var coords= new google.maps.LatLng(lat1,lon1);
 					   //geocodeAddress(geocoder, map);
-					   placeMarker(coords);
+					   placeMarker(coords,pgref);
 					   
 					}
 				   
@@ -190,24 +214,23 @@
   SEARCH
 </button>
 
-
-    
-	
 <div id="map" style="height:500px; width:800px; margin-left:20em; margin-top:50px;margin-bottom:100px;border-right: 1px solid #666666; border-bottom: 1px solid #666666; border-top: 1px solid #AAAAAA; border-left: 1px solid #AAAAAA;"></div>
 		  
 	  </main>
-	  
+	<input type="hidden" id="myInput">
+
 </form>	
-<input type="text" id="myInput">
+
 
 
   <%if(!(null == session.getAttribute("alpg"))){
-			      ArrayList<PG> alpg= (ArrayList)session.getAttribute("alpg");
+			      
 			      //System.out.println(alpg.size());
+			      //session.setAttribute("alpg", alpg);
 			      String adrs="";
 			      for(int i=0;i<alpg.size();i++)
 			      {
-				    	   adrs=adrs+"$"+alpg.get(i).getLat()+","+alpg.get(i).getLon();//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
+				    	   adrs=adrs+"$"+alpg.get(i).getLat()+","+alpg.get(i).getLon()+","+alpg.get(i).getPGID();//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
 				    	   System.out.println(adrs);
 				    	  %>
 				    	 <script > document.getElementById("myInput").value="<%=adrs%>";</script>

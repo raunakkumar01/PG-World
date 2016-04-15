@@ -8,16 +8,20 @@ public class Student extends User{
    private String address;
    private String contact_no;
 
-    public Student(String gender, String dob, String college, String address, String contact_no, String username, String password) {
-        super(username, password);
-        this.gender = gender;
-        this.dob = dob;
-        this.college = college;
-        this.address = address;
-        this.contact_no = contact_no;
-    }
+  
 
-    public String getGender() {
+    public Student(String username, String password, String name, String category,
+		String gender, String dob, String college, String address,
+		String contact_no) {
+	super(username, password, name, category);
+	this.gender = gender;
+	this.dob = dob;
+	this.college = college;
+	this.address = address;
+	this.contact_no = contact_no;
+}
+
+	public String getGender() {
         return gender;
     }
 

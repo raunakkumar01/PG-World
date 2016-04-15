@@ -44,19 +44,18 @@ String p1=request.getParameter("p1");
 String p2=request.getParameter("p2");
 String p3=request.getParameter("p3");
 String ad=session.getAttribute("adrs").toString();
-String cat=session.getAttribute("cat").toString();
 %>
 
 <%
 int val=PGManager.createPG3(ad,unm,gender, tv, ac, food, wifi, b1, p1 , b2, p2, b3, p3);
 if(val==1){
-	request.getSession().setAttribute("cat", cat);
+	request.getSession().setAttribute("cat", "HouseOwner");
 	session.removeAttribute("adrs");
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("manageprofile_houseowner.jsp");
           }
 else if(val==2){
-	request.getSession().setAttribute("cat", cat);
+	request.getSession().setAttribute("cat", "HouseOwner");
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("mgrprofile_ho_facilities.jsp");	
    }
