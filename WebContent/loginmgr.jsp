@@ -22,6 +22,7 @@ if(r.equalsIgnoreCase("HOUSE"))
 }
 else if(r.equalsIgnoreCase("STUDENT"))
 {
+	session.setAttribute("cat", "student");
     session.setAttribute("mail",mail);
 	response.sendRedirect("Home.jsp");	
 }

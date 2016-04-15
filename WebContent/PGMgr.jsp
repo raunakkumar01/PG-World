@@ -39,7 +39,7 @@ String unm=session.getAttribute("mail").toString();
 int id=Integer.parseInt(request.getParameter("pgd"));
 ArrayList<PG> ar=PGManager.getPGDetails(id);
 request.getSession().setAttribute("pgid",ar.get(0).getPGID());
-
+request.getSession().setAttribute("cat","Houseowner");
 %>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -50,8 +50,8 @@ request.getSession().setAttribute("pgid",ar.get(0).getPGID());
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>
-               <a class="mdl-navigation__link" href="" style="color:white">About</a>      
+               <form action="gotohome.jsp" method="post"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">HOME</button></form>
+                     
             </nav>
          </div>
       </header>
