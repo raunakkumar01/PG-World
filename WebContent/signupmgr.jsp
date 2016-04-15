@@ -18,11 +18,13 @@ if(rs==0)
 	response.sendRedirect("Home.jsp");
 else if (rs==1)
 {
+	request.getSession().setAttribute("cat", cat);
 	request.getSession().setAttribute("mail", mail);
 	response.sendRedirect("signup_houseowner.jsp");
 }
 else if (rs==2)
 {
+	request.getSession().setAttribute("cat", cat);
 	request.getSession().setAttribute("mail", mail);
 	response.sendRedirect("singup_student.jsp");	
 }

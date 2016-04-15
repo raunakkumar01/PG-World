@@ -8,24 +8,26 @@
 </head>
 <body>
 <%
+
 String address1= request.getParameter("add1");
 String address2= request.getParameter("add2");
 String dob= request.getParameter("dob");
 String clgname= request.getParameter("clgname");
 String gender=request.getParameter("user_type");
 String address=address1+address2;
-//Connection con=ConnectionFact.dbConnect();
 String unm=session.getAttribute("mail").toString();
+String cat=session.getAttribute("cat").toString();
 request.getSession().removeAttribute("mail");
 int ee=UserManager.register_student(unm, gender, dob, address, clgname);
 if(ee==1)
-{   
+{   request.getSession().setAttribute("cat", cat);
 	request.getSession().setAttribute("mail", unm);
 	System.out.println("success");
 	response.sendRedirect("Home.jsp");
 }
 else if(ee==2)
 {
+	request.getSession().setAttribute("cat", cat);
 	request.getSession().setAttribute("mail", unm);
     System.out.println("Renter Details");
     response.sendRedirect("signup_student.jsp");

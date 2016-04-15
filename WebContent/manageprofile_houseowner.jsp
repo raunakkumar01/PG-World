@@ -57,7 +57,7 @@ while(rs1.next())
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>
+               <form action="gotohome.jsp" method="post"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">HOME</button></form>
                <a class="mdl-navigation__link" href="" style="color:white">About</a>      
             </nav>
          </div>

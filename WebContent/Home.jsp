@@ -79,9 +79,9 @@
           
         </ul>
         <ul class="pull-right">
-       
-          <li><%if(null == session.getAttribute("mail"))
-                      {
+          <li> 
+          <%if(null == session.getAttribute("mail"))
+        	  {
                     	  
                          %>
                    <form class="navbar-form navbar-right" role="form" method="post" action="loginmgr.jsp">
@@ -89,21 +89,30 @@
                             <input type="text" required="required" maxlength="15" name="mail" class="form-control" placeholder="Username" />
                             <input type="password" required="required" maxlength="15" name="pwd" class="form-control" placeholder="Password" />
                         </div>
-                        <button type="submit" class="btn btn-default">Log In</button>
+                        <button type="submit" class="btn btn-default">Log In</button></li>
                           <li><a href="SignUp.jsp">Sign Up</a></li> 
-                           
-                    </form>
+                   </form>
                     <%
                       }
-                    else
-                    {
+                    else{ 
+                    	if(session.getAttribute("cat").toString().equalsIgnoreCase("STUDENT"))
+                        {
                     	String unm= session.getAttribute("mail").toString();
                     	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
                     	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
-                    }
-                    
-                    
-                    %></li><a href="searchPG.jsp">Search</a></li>
+                    %></li><li><a href="searchPG.jsp">Search</a></li>
+                    <%} else
+                          {
+                    	   if(session.getAttribute("cat").toString().equalsIgnoreCase("HOUSEOWNER")){
+                    		 String unm= session.getAttribute("mail").toString();
+                           	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
+                           	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
+                           %></li><li><a href="manageprofile_houseowner.jsp">Manage Profile</a></li>
+                           <%
+                    	   }
+                    	  }
+                      }
+                   %>
         </ul>
       </div>
     </div>

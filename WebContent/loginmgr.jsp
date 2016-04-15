@@ -13,52 +13,22 @@ String pwd=request.getParameter("pwd");
 Connection con=ConnectionFact.dbConnect();
 // String stquery2="SELECT PWD,CATEGORY FROM PG_USER WHERE USERNAME=?";
 //UserManager usr=new UserManager();
-int r=UserManager.authenticate(mail, pwd);
-if(r==1)
+String r=UserManager.authenticate(mail, pwd);
+if(r.equalsIgnoreCase("HOUSE"))
 {
 	session.setAttribute("mail",mail);
 	response.sendRedirect("manageprofile_houseowner.jsp");
 }
-else if(r==2)
+else if(r.equalsIgnoreCase("STUDENT"))
 {
     session.setAttribute("mail",mail);
 	response.sendRedirect("Home.jsp");	
 }
-else if(r==0)
+else if(r.equalsIgnoreCase("FAILED"))
 {
 	session.removeAttribute("mail");
 	response.sendRedirect("Home.jsp");
 }
-/*PreparedStatement pst=con.prepareStatement(stquery2);
-pst.setString(1, mail);
-ResultSet rs=pst.executeQuery();
-if(rs.next())
-{
-	
-	{if(pwd.equals(rs.getString("PWD")))
-			{
-								
-		if(rs.getString("CATEGORY").equalsIgnoreCase("Houseowner"))
-		{
-			session.setAttribute("mail",mail);
-			response.sendRedirect("manageprofile_houseowner.jsp");
-			
-			
-		}
-		else if(rs.getString(4).equalsIgnoreCase("Student"))
-		{
-			session.setAttribute("mail",mail);
-			response.sendRedirect("Home.jsp");
-			
-			
-		}
-			}
-	}}}
-	
-catch(Exception e)
-{
-out.println(e);
-}*/
 
 %>
 

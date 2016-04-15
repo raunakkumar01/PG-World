@@ -39,13 +39,14 @@ String p2=request.getParameter("p2");
 String b3=request.getParameter("b3");
 String p3=request.getParameter("p3");
 
+String cat=session.getAttribute("cat").toString();
 String unm=session.getAttribute("mail").toString();
 String adrs=session.getAttribute("adrs").toString();
 
 
 int ewd=UserManager.register_houseowner(adrs,unm,pg_for, tv, ac, food, wifi, b1, p1, b2, p2, b3, p3);
 if (ewd==1)
-{
+{   request.getSession().setAttribute("cat", cat);
 	request.getSession().setAttribute("mail", unm);
 	System.out.println("success !");
 	System.out.println("hi1");

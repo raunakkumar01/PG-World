@@ -13,15 +13,17 @@ String city= request.getParameter("city");
 String pin= request.getParameter("pin");
 String lat= request.getParameter("lt");
 String lng=request.getParameter("lng");
+String cat=session.getAttribute("cat").toString();
 String unm=session.getAttribute("mail").toString();
 int ww=UserManager.reghouse(unm, address, city, pin, lat, lng);
 if (ww==1)
-{   request.getSession().setAttribute("adrs", address);
+{   request.getSession().setAttribute("cat",cat);
+	request.getSession().setAttribute("adrs", address);
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("singup_houseowner2.jsp");
 }
 else if(ww==0)
-{
+{   request.getSession().setAttribute("cat",cat);
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("signup_houseowner.jsp");
 }

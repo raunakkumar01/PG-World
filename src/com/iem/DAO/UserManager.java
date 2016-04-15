@@ -7,10 +7,11 @@ import java.util.ArrayList;
 public class UserManager {
 	
 	
-	public static int authenticate(String mail,String pwd){
-		try{
-			int house=1;
-			int stud=2;
+	public static String authenticate(String mail,String pwd){
+		String house="HOUSE";
+		String stud="STUDENT";
+		String fail="FAILED";
+  try{
 	Connection con=ConnectionFact.dbConnect();
 	String stquery2="SELECT PWD,CATEGORY FROM PG_USER WHERE USERNAME=?";
 	PreparedStatement pst=con.prepareStatement(stquery2);
@@ -25,6 +26,7 @@ public class UserManager {
 									
 			if(rs.getString("CATEGORY").equalsIgnoreCase("Houseowner"))
 			{
+				
 				return house;
 			}
 			else if(rs.getString("CATEGORY").equalsIgnoreCase("Student"))
@@ -36,7 +38,7 @@ public class UserManager {
 		}
 	}
 	catch(Exception es){}
-	return 0;
+	return fail;
 	}
 	
 	public static int register_gen(String mail,String pwd,String name,String cat, String contact_number)

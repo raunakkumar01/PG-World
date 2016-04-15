@@ -8,6 +8,7 @@
 </head>
 <body>
 <% 
+String cat=session.getAttribute("cat").toString();
 String pgg=session.getAttribute("pgid").toString();
 String unm=session.getAttribute("mail").toString();
 String tv="false";
@@ -41,12 +42,14 @@ String p2=request.getParameter("p2");
 String p3=request.getParameter("p3");
 int val=PGManager.updatePG(pgg,unm,gender, tv, ac, food, wifi, b1, p1 , b2, p2, b3, p3);
 if(val==1){
+	request.getSession().setAttribute("cat", cat);
 	session.removeAttribute("pgid");
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("manageprofile_houseowner.jsp");
 	
           }
 else if(val==2){
+	request.getSession().setAttribute("cat", cat);
 	session.removeAttribute("pgid");
 	request.getSession().setAttribute("mail", unm);
 	response.sendRedirect("PGMgr.jsp");	
