@@ -10,7 +10,7 @@
 <%
  
 //int i=Integer.parseInt(request.getParameter("pgref").toString());
-int pgid=Integer.parseInt(request.getParameter("pgid"));
+int pgid=Integer.parseInt(request.getParameter("pgid").substring(0,request.getParameter("pgid").indexOf(":")));
 
 
 PG p=PG.getPG(pgid);

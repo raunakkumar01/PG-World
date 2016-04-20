@@ -74,8 +74,18 @@
   font-size: 15px;
 }
     </style>
+    <% if(!(null == session.getAttribute("fail"))&&!(session.getAttribute("fail").equals("")))
+    {
+    	
+    	%>
+    	<!--  <script type="text/javascript">
+    	alert("Invalid Username or Password");
+    	</script>-->
+    	<%
+    }%>
 </head>
 <body>
+
  <div class="nav">
       <div class="container">
         <ul class="pull-left">

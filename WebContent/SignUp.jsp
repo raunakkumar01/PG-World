@@ -15,7 +15,46 @@
     <link rel="stylesheet" href="css/style1.css">
     <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <script>
-      
+      function validate(){
+    	  var a=document.getElementById("name").value;
+    	  var b=document.getElementById("number").value;
+    	  var c=document.getElementById("mail").value;
+    	  var d=document.getElementById("password").value;
+ 
+    	  var e=document.getElementsByName("user_cat");
+    	  
+
+    	  if(a.length ==0 || b.length==0 || c.length==0 || d.length==0){
+    		  alert("ALL FIELDS ARE MANDATORY");
+    		 return false;
+    	  }
+    	  var x=document.getElementById("number");
+    	  var y=x.value;
+    	  if(!isNaN(y)){
+    	  if(y.length !== 10){
+    	  alert("Enter mobile no of 10 digits only");
+    	  x.value="";
+    	  return false;
+    	  }
+    	  }
+    	  else{
+    	  alert("Enter digits only");
+    	  x.value="";
+    	  return false;
+    	  }
+    	  var flag=0;
+    	  for(var i = 0; i < e.length; i++) {
+    	     if(e[i].checked == true) {
+    	        flag=1;
+    	  	  break;
+    	     }
+    	   }
+    	   if(flag===0){
+    	   alert("Choose one of the Category");
+    	   return false;
+    	   }
+    	  return true; 
+      }
     </script>
 </head>
 <body>
@@ -40,7 +79,7 @@
           <input type="radio" id="Houseowner" value="Houseowner" name="user_cat"><label for="Houseowner" class="light">Houseowner</label><br>
           <input type="radio" id="Student" value="Student" name="user_cat"><label for="Student" class="light">Student</label>
         </fieldset>
-        <button type="submit">Next</button>
+        <button type="submit" onclick="return validate();">Next</button>
       </form>
 </body>
 </html>

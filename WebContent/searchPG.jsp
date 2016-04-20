@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import= "java.util.Collections"    import="com.iem.BEAN.PG" import="java.util.ArrayList"%>
+    pageEncoding="ISO-8859-1" import= "java.util.Collections"    import="com.iem.BEAN.PG" import="java.util.ArrayList"  import="java.util.Map"
+    import="com.iem.DAO.SearchManager" import="java.util.HashMap" import="com.iem.BEAN.College"%>
 <%-- 
   - Author: Raunak Kumar
   - Description:
@@ -24,14 +25,43 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
    		
-		<%ArrayList<PG> alpg= (ArrayList)session.getAttribute("alpg");
-		if(!(null == session.getAttribute("alpg")))
+		<%//ArrayList<PG> alpg= (ArrayList)session.getAttribute("alpg");
+		College c=(College)session.getAttribute("clg");
+		ArrayList<PG> alpgn= (ArrayList)session.getAttribute("alpgn");//All pg with greater no of boys for the given college
+		ArrayList<PG> alpgf= (ArrayList)session.getAttribute("alpgf");//All pg with greater no of boys for the other college
+		HashMap<PG,HashMap<String,Integer>> pgStudentsOfCollege = (HashMap<PG,HashMap<String,Integer>>)session.getAttribute("pgStudentsOfCollege");
+		if((!(null == session.getAttribute("alpgn")))||(!(null == session.getAttribute("alpgf")))||!(null==session.getAttribute("clg")))
         {
 		      	 System.out.println("Printing hostels");
 		      	String adrs="";
-		           %>		
-		           var myCenter=new google.maps.LatLng(22.574470, 88.433813);
+		           %>	
+		           var prev_infowindow=null;
+		           var myCenter=new google.maps.LatLng(<%=c.getLat()%>, <%=c.getLongi()%>);
 		           var map;
+		           function placeMarkerCntr(location) {
+				    	  var marker = new google.maps.Marker({
+				    	    position: location,
+				    	    map: map,
+				    	    icon:'http://findicons.com/files/icons/951/google_maps/32/school.png',
+				    	  });
+				    	  var infowindow = new google.maps.InfoWindow({
+				    		  
+				    	    content: ' <%=c.getName()%>'
+				    	  });
+				    	  //infowindow.open(map,marker);
+				    	  
+				    	  //to see if the marker is clicked
+				    	  
+				    	  google.maps.event.addListener(marker, 'mouseover', function () {
+				    		  if( prev_infowindow ) {
+				    	           prev_infowindow.close();
+				    	        }
+
+				    	       prev_infowindow = infowindow;
+				    		  infowindow.open(map,marker);
+				            });
+				    	  
+				    	}
 		           function initialize()
 		           {
 		           var mapProp = {
@@ -41,16 +71,47 @@
 		             };
 					
 		            map = new google.maps.Map(document.getElementById("map"),mapProp);
+		            placeMarkerCntr(myCenter)
 		           } 
 				var lat1;
 			    var lng1;
 			   
 			    
-			    var prev_infowindow=null;
+			   
 			      function placeMarker(location,pgref) {
 			    	  var marker = new google.maps.Marker({
 			    	    position: location,
 			    	    map: map,
+			    	  });
+			    	  var infowindow = new google.maps.InfoWindow({
+			    		  
+			    	    content: 'PGID: '+pgref+
+			    	    			'<form action="PGDetailsMgr.jsp" method="post"><input type="hidden" id="pgid" name="pgid">'+  
+									'<input type="submit" value="Show Details" /></form>	'
+			    	    	//'<form action="PGDetailsMgr.jsp" method="post"><input type="text" id="pgref" value="'+pgref+'"/><button >SeeDetails</button></form>'
+							// '<a href="PGDetails.jsp">See Details</a>'//'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+			    	  });
+			    	  //infowindow.open(map,marker);
+			    	  
+			    	  //to see if the marker is clicked
+			    	  
+			    	  google.maps.event.addListener(marker, 'mouseover', function () {
+			    		  if( prev_infowindow ) {
+			    	           prev_infowindow.close();
+			    	        }
+
+			    	       prev_infowindow = infowindow;
+			    		  infowindow.open(map,marker);
+			    		  document.getElementById("pgid").value=pgref;
+			            });
+			    	  
+			    	}
+			      
+			      function placeMarker1(location,pgref) {
+			    	  var marker = new google.maps.Marker({
+			    	    position: location,
+			    	    map: map,
+			    	    icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png', 
 			    	  });
 			    	  var infowindow = new google.maps.InfoWindow({
 			    		  
@@ -96,6 +157,21 @@
 					   placeMarker(coords,pgref);
 					   
 					}
+				   inp=document.getElementById("myInput1").value;
+				   res = inp.split("$");
+				  
+				   for (i = 1; i < res.length; i++) { 
+					   var ll= res[i].split(",");
+					   console.log(ll);
+					   var lat1=ll[0];
+					   var lon1=ll[1];
+					   var pgref=ll[2];
+					   //var coords= new google.maps.LatLng(22.574470, 88.433813);
+					   var coords= new google.maps.LatLng(lat1,lon1);
+					   //geocodeAddress(geocoder, map);
+					   placeMarker1(coords,pgref);
+					   
+					}
 				   
 			   }
 			   google.maps.event.addDomListener(window, 'load', initialize);
@@ -139,8 +215,19 @@
 <form action="searchPGMgr.jsp" method="post">
 	  
 	  <main class="mdl-layout__content">
-	  
-	   <div style="margin-left: 40em;"><p style="font-weight: bold;">College names:</p><input type="text" list="colleges" />
+	  <div style="margin-left: 40em;"><p style="font-weight: bold;">College names:
+	  <select name="clgnm">
+	  <option value="IEM">IEM</option>
+       <option value="Heritage">Heritage</option>
+       <option value="Techno">Techno</option>
+       <option value="BP Poddar">BP Poddar</option>
+       <option value="Jadavpur">Jadavpur</option>
+       <option value="Meghnad Saha Institue of Technology">Meghnad Saha Institue of Technology</option>
+	  </select>
+	   </div>
+	   <!--  
+	  <div style="margin-left: 40em;"><p style="font-weight: bold;">College names:</p><input type="text" list="colleges"  />
+	   
 	   <datalist id="colleges">
        <option value="IEM">IEM</option>
        <option value="Heritage">Heritage</option>
@@ -149,6 +236,7 @@
        <option value="Meghnad Saha Institue of Technology">Meghnad Saha Institue of Technology</option>
        </datalist> 
         </div>
+        -->
 	   <table style="margin-left:40em;">
 	   <tr>
 	   <td>
@@ -218,19 +306,29 @@
 		  
 	  </main>
 	<input type="hidden" id="myInput">
-
+	<input type="hidden" id="myInput1">
 </form>	
 
 
 
-  <%if(!(null == session.getAttribute("alpg"))){
+  <%//if(!(null == session.getAttribute("alpg")))
+  if((!(null == session.getAttribute("alpgn")))||(!(null == session.getAttribute("alpgf"))))
+      {
 			      
 			      //System.out.println(alpg.size());
 			      //session.setAttribute("alpg", alpg);
 			      String adrs="";
-			      for(int i=0;i<alpg.size();i++)
+			      for(int i=0;i<alpgn.size();i++)
 			      {
-				    	   adrs=adrs+"$"+alpg.get(i).getLat()+","+alpg.get(i).getLon()+","+alpg.get(i).getPGID();//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
+				    	   adrs=adrs+"$"+alpgn.get(i).getLat()+","+alpgn.get(i).getLon()+","+alpgn.get(i).getPGID()+":";//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
+				    	   
+				    	   for (Map.Entry<String, Integer> entryI : pgStudentsOfCollege.get(alpgn.get(i)).entrySet())
+							{
+								adrs+="<br>"+entryI.getKey()+"->"+entryI.getValue();
+							}
+				    	   
+				    	   
+				    	   
 				    	   System.out.println(adrs);
 				    	  %>
 				    	 <script > document.getElementById("myInput").value="<%=adrs%>";</script>
@@ -238,7 +336,27 @@
 				    	  <%
 			      }
 			      
-			      request.getSession().removeAttribute("alpg");
+			      request.getSession().removeAttribute("alpgn");
+			      adrs="";
+			      for(int i=0;i<alpgf.size();i++)
+			      {
+				    	   adrs=adrs+"$"+alpgf.get(i).getLat()+","+alpgf.get(i).getLon()+","+alpgf.get(i).getPGID()+":";//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
+				    	   
+				    	   for (Map.Entry<String, Integer> entryI : pgStudentsOfCollege.get(alpgf.get(i)).entrySet())
+							{
+								adrs+="<br>"+entryI.getKey()+"->"+entryI.getValue();
+							}
+				    	   
+				    	   
+				    	   
+				    	   System.out.println(adrs);
+				    	  %>
+				    	 <script > document.getElementById("myInput1").value="<%=adrs%>";</script>
+				    	  
+				    	  <%
+			      }
+			      
+			      request.getSession().removeAttribute("alpgf");
   }
 			      %>
 	  <footer class="mdl-mini-footer">

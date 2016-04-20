@@ -87,7 +87,7 @@ while(rs1.next())
   ADD PG DETAILS
 </button>
 </form>
-<form action="post">
+<form action ="verify_student.jsp" method="post">
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 42em; margin-top: 10px;">
   VERIFY STUDENT
 </button>

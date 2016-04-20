@@ -25,11 +25,16 @@ else if(r.equalsIgnoreCase("STUDENT"))
 	session.setAttribute("cat", "student");
     session.setAttribute("mail",mail);
 	response.sendRedirect("Home.jsp");	
+	//session.setAttribute("fail","");
 }
 else if(r.equalsIgnoreCase("FAILED"))
 {
 	session.removeAttribute("mail");
+	//session.setAttribute("fail","fail");
+	
+	
 	response.sendRedirect("Home.jsp");
+	
 }
 
 %>

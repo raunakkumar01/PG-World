@@ -14,7 +14,76 @@
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/style1.css">
+    <script type="text/javascript">
+    function validate(){
+    var a=document.getElementsByName("audi");
+    var flag=0;
+    for(var i = 0; i < a.length; i++) {
+       if(a[i].checked == true) {
+          flag=1;
+    	  break;
+       }
+     }
+     if(flag===0){
+     alert("Choose one of the sex");
+     return false;
+     }
+     var b1=document.getElementById("b1").value;
+     var p1=document.getElementById("p1").value;
+     var b2=document.getElementById("b2").value;
+     var p2=document.getElementById("p2").value;
+     var b3=document.getElementById("b3").value;
+     var p3=document.getElementById("p3").value;
+     if((b1.length>0&&p1.length>0) || (b2.length>0&&p2.length>0) ||(b3.length>0&&p3.length>0)){
+    	 if(b1.length>0 && p1.length>0){
+    		 var x=parseInt(b1);
+    		 var y=parseInt(p1);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
     
+    	 }
+    	 if(b2.length>0 && p2.length>0){
+    		 var x=parseInt(b2);
+    		 var y=parseInt(p2);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
+    		 
+    	 }
+    	 if(b3.length>0 && p3.length>0){
+    		 var x=parseInt(b3);
+    		 var y=parseInt(p3);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
+    		 
+    	 }
+     }
+     else{
+    	 alert("ENTER ANY ONE TYPE OF BED AND ITS COST");
+    	 return false;
+     }
+
+     return true;
+    }
+    
+    </script>
 </head>
 <body>
    <form action="signupmgr_houseowner.jsp" method="post">
@@ -42,25 +111,25 @@
   <tbody>
     <tr>
       <td>1</td>
-      <td><input type="text" name="b1" ></td>
-      <td><input type="text" name="p1"  ></td>
+      <td><input type="text" name="b1" id="b1" ></td>
+      <td><input type="text" name="p1" id="p1" ></td>
     </tr>
     <tr>
       <td>2</td>
-      <td><input type="text" name="b2" ></td>
-      <td><input type="text" name="p2" ></td>
+      <td><input type="text" name="b2" id="b2" ></td>
+      <td><input type="text" name="p2" id="p2"></td>
     </tr>
     <tr>
       <td>3</td>
-      <td><input type="text" name="b3"  ></td>
-      <td><input type="text" name="p3"  ></td>
+      <td><input type="text" name="b3"  id="b3" ></td>
+      <td><input type="text" name="p3"  id="p3"></td>
     </tr>
   </tbody>
 </table>
         </fieldset>
         
         
-        <button type="submit">Register</button>
+        <button type="submit" onclick="return validate();">Register</button>
       </form>
  
 </body>

@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css "href="css/material.css">
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
+
 <title>ADD PG</title>
 <script>
     var lat1;
@@ -25,7 +26,38 @@
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
+        	
+        	var a=document.getElementById("text14").value;
+        	var b=document.getElementById("text6").value;
+        	if(a.length >0 ){
+        	if(b.length >0){
+        			var x=document.getElementById("text2");
+        			var y=x.value;
+        			if(!isNaN(y)){
+        			if(y.length <6 || y.length>6){
+        			alert("Enter pin of 6 digits");
+        			x.value="";
+        			document.getElementById("text2").focus();
+        			}
+        			else{
+        				geocodeAddress(geocoder, map);
+        			}
+        			}
+        			else{
+        			alert("Enter digits only");
+        			x.value="";
+        			document.getElementById("text2").focus();
+        			}
+        		}
+        	else{
+        		alert("ENTER CITY NAME");
+        	}
+        	}
+        	else{
+        		alert("ENTER ADDRESS");
+        	}
+        	
+          
         });
       }
 
@@ -92,20 +124,20 @@
             <ul>
 			<li>           
 		    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" id="text14">
+               <input class="mdl-textfield__input" type="text" id="text14" required>
                <label class="mdl-textfield__label" for="text14">Address</label>
             </div>
 			</li>
 			        
 			<li>
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" id="text6">
+               <input class="mdl-textfield__input" type="text" id="text6" required>
                <label class="mdl-textfield__label" for="text6">City</label>
             </div>
             </li>
 			<li>
 			 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text2">
+               <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text2" required>
                <label class="mdl-textfield__label" for="text2">Pincode</label>
 			   <span class="mdl-textfield__error">Number required!</span>
             </div>
@@ -120,7 +152,7 @@
             <button onclick="sub()" id="submit1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left:35px;">
              NEXT
              </button>
-            </td>
+            </td> 
 			<td>
 		
 			</td>

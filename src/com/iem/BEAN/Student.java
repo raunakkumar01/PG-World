@@ -1,5 +1,12 @@
 package com.iem.BEAN;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.iem.ConnectionFactory.ConnectionFact;
+
 public class Student extends User{
     
    private String gender;
@@ -59,6 +66,24 @@ public class Student extends User{
 
     public void setContact_no(String contact_no) {
         this.contact_no = contact_no;
+    }
+    public static String getCollege(String unm)
+    {
+    	//ArrayList<Rental> =new ArrayList<Rental>();
+    	String clgnm=null;
+    	try{
+    		Connection con=ConnectionFact.dbConnect();
+    		String stquery = "Select COLLEGE_NAME from PG_STUDENT where USERNAME=?";
+    		PreparedStatement pst=con.prepareStatement(stquery);	
+    		pst.setString(1, unm);
+    		ResultSet rs=pst.executeQuery();
+    		while(rs.next())
+    		{
+    			clgnm=rs.getString("COLLEGE_NAME");
+    		}
+    	}
+    	catch(Exception es){}
+    	return clgnm;
     }
    
 }

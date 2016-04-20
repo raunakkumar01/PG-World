@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%-- 
-  - Author: Shamik Kundu
-  - Description: during signup, housewoner must add details of one of his PG. in this page details (1/2) can be added.
+  - Author: Raunak Kumar
+  - Description:  In this page admin will add details of a new college
   --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css "href="css/material.css">
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
-<title>Configure College</title>
+<title>ADD PG</title>
 <script>
     var lat1;
     var lng1;
@@ -25,36 +25,7 @@
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('submit').addEventListener('click', function() {
-        	var a=document.getElementById("text14").value;
-        	var b=document.getElementById("text6").value;
-        	if(a.length >0 ){
-        	if(b.length >0){
-        			var x=document.getElementById("text2");
-        			var y=x.value;
-        			if(!isNaN(y)){
-        			if(y.length <6 || y.length>6){
-        			alert("Enter pin of 6 digits");
-        			x.value="";
-        			document.getElementById("text2").focus();
-        			}
-        			else{
-        				geocodeAddress(geocoder, map);
-        			}
-        			}
-        			else{
-        			alert("Enter digits only");
-        			x.value="";
-        			document.getElementById("text2").focus();
-        			}
-        		}
-        	else{
-        		alert("ENTER CITY NAME");
-        	}
-        	}
-        	else{
-        		alert("ENTER ADDRESS");
-        	}
-        	
+          geocodeAddress(geocoder, map);
         });
       }
 
@@ -122,7 +93,7 @@
 			<li>           
 		    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                <input class="mdl-textfield__input" type="text" id="text14">
-               <label class="mdl-textfield__label" for="text14">Address</label>
+               <label class="mdl-textfield__label" for="text14">College Name</label>
             </div>
 			</li>
 			        
@@ -175,7 +146,7 @@
             
           </div>
            <div class="mdl-cell mdl-cell--6-col">
-          <form action="signupmgr_houseowner2.jsp" method="post">
+          <form action="addcollege_mgr.jsp" method="post">
 	        <div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--4-col">
 			
