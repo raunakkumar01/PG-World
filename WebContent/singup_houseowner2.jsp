@@ -25,7 +25,7 @@
        }
      }
      if(flag===0){
-     alert("Choose one of the sex");
+     alert("Choose one of the gender");
      return false;
      }
      var b1=document.getElementById("b1").value;
@@ -46,6 +46,10 @@
     			 alert("ENTER ONLY POSITIVE VALUES");
     			 return false;
     		 }
+    		if(x!=b1 || y!=p1){
+    			alert(" DO NOT ENTER DECIMALS");
+   			 return false;
+    		}
     
     	 }
     	 if(b2.length>0 && p2.length>0){
@@ -59,6 +63,10 @@
     			 alert("ENTER ONLY POSITIVE VALUES");
     			 return false;
     		 }
+    		 if(x!==b2 || y!==p2){
+     			alert(" DO NOT ENTER DECIMALS");
+    			 return false;
+     		}
     		 
     	 }
     	 if(b3.length>0 && p3.length>0){
@@ -72,17 +80,31 @@
     			 alert("ENTER ONLY POSITIVE VALUES");
     			 return false;
     		 }
-    		 
+    		 if(x!==b3 || y!==p3){
+     			alert(" DO NOT ENTER DECIMALS");
+    			 return false;
+     		}
     	 }
      }
      else{
     	 alert("ENTER ANY ONE TYPE OF BED AND ITS COST");
     	 return false;
      }
-
+     if(b1.length <1 && p1.length <1){
+    	 document.getElementById("b1").value="0";
+    	 document.getElementById("p1").value="0";
+     }
+     if(b2.length <1 && p2.length <1){
+    	 document.getElementById("b2").value="0";
+    	 document.getElementById("p2").value="0";
+    	 }
+     if(b3.length <1 && p3.length <1){
+    	 document.getElementById("b3").value="0";
+    	 document.getElementById("p3").value="0";
+     }
      return true;
     }
-    
+       
     </script>
 </head>
 <body>

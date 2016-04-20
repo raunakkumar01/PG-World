@@ -18,22 +18,27 @@
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
 
 <script type="text/javascript">
-function addrow(){
-var table = document.getElementById("mytable");
-var rowCount = table.rows.length;
-     var row = table.insertRow(rowCount);
-
-var cell1 = row.insertCell(0);
-var cell2=row.insertCell(1);
-var element1 = document.createElement("input");
-     element1.type = "text";
-     element1.name = "txtbox1";
-     cell1.appendChild(element1);
-     
-     var element2 = document.createElement("input");
-     element2.type = "text";
-     element2.name = "txtbox2";
-     cell2.appendChild(element2);
+function validate1(){
+	var a=document.getElementById("text142").value;
+	var b=document.getElementById("text143").value;
+	a=a.trim();
+	b=b.trim();
+	if(a.length<1 || b.length <1){
+		alert("ENTER STUDENT_ID AND PG_ID BOTH(FOR ADDING)");
+		return false;
+	}
+	return true;
+}
+function validate2(){
+	var a=document.getElementById("text144").value;
+	var b=document.getElementById("text145").value;
+	a=a.trim();
+	b=b.trim();
+	if(a.length<1 || b.length <1){
+		alert("ENTER STUDENT_ID AND PG_ID BOTH(FOR DELETING)");
+		return false;
+	}
+	return true;
 }
 </script>
 <style>
@@ -121,7 +126,7 @@ PG_ID:<input type="text" name="pgid" />
                <input class="mdl-textfield__input" type="text" id="text143" name="pgid">
                <label class="mdl-textfield__label" for="text143">PG ID</label>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="return validate1();">
   ADD STUDENT
 </button>
             
@@ -176,7 +181,7 @@ PG_ID:<input type="text" name="pgid" />
                <input class="mdl-textfield__input" type="text" id="text145" name="pgid1">
                <label class="mdl-textfield__label" for="text143">PG ID</label>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="return validate2();" >
   DELETE STUDENT
 </button>
             

@@ -40,7 +40,16 @@
         			document.getElementById("text2").focus();
         			}
         			else{
-        				geocodeAddress(geocoder, map);
+        				if(y==parseInt(y)){
+        					geocodeAddress(geocoder, map);
+        				}
+        				else{
+        					alert("No decimals please.");
+        					x.value="";
+                			document.getElementById("text2").focus();
+        				}
+        				
+        				
         			}
         			}
         			else{

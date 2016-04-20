@@ -38,6 +38,7 @@ table {
 String unm=session.getAttribute("mail").toString();
 int id=Integer.parseInt(request.getParameter("pgd"));
 ArrayList<PG> ar=PGManager.getPGDetails(id);
+PG p=ar.get(0);
 request.getSession().setAttribute("pgid",ar.get(0).getPGID());
 request.getSession().setAttribute("cat","Houseowner");
 %>
@@ -73,12 +74,12 @@ request.getSession().setAttribute("cat","Houseowner");
 <div class="mdl-cell mdl-cell--4-col">
  <ul>        
 <li> PG for:
-<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
-            <input type="radio" id="option2" name="gender" class="mdl-radio__button" value="female">
+<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2" >
+            <input type="radio" id="option2" name="gender" class="mdl-radio__button" value="female"  <%if(p.getPG_FOR().equalsIgnoreCase("female")) {%>checked="checked"<%} %>>
             <span class="mdl-radio__label">Female</span>
          </label>
  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
-            <input type="radio" id="option1" name="gender" class="mdl-radio__button" value="male">
+            <input type="radio" id="option1" name="gender" class="mdl-radio__button" value="male"  <%if(p.getPG_FOR().equalsIgnoreCase("male")) {%>checked="checked"<%} %> >
             <span class="mdl-radio__label">Male</span>
          </label>
 </li>
@@ -96,18 +97,18 @@ request.getSession().setAttribute("cat","Houseowner");
   <tbody>
     <tr>
       <td>1</td>
-      <td><input type="text"  style="width:30px;" name="b1"></td>
-      <td><input type="text"  style="width: 50px;" name="p1"></td>
+      <td><input type="text"  style="width:30px;" name="b1" value="<%=p.getB1()%>"></td>
+      <td><input type="text"  style="width: 50px;" name="p1" value="<%=p.getP1() %>"></td>
     </tr>
     <tr>
       <td>2</td>
-      <td><input type="text" style="width: 30px;" name="b2"></td>
-      <td><input type="text" style="width: 50px;" name="p2"></td>
+      <td><input type="text" style="width: 30px;" name="b2" value="<%=p.getB2() %>"></td>
+      <td><input type="text" style="width: 50px;" name="p2" value="<%=p.getP2() %>"></td>
     </tr>
     <tr>
       <td>3</td>
-      <td><input type="text"  style="width: 30px;" name="b3"></td>
-      <td><input type="text"  style="width: 50px;" name="p3"></td>
+      <td><input type="text"  style="width: 30px;" name="b3" value="<%=p.getB3() %>"></td>
+      <td><input type="text"  style="width: 50px;" name="p3" value="<%=p.getP3() %>"></td>
     </tr>
   </tbody>
 </table>
@@ -115,19 +116,19 @@ request.getSession().setAttribute("cat","Houseowner");
 <div class="mdl-cell mdl-cell--4-col" style="margin-top: 100px;">
 <p style="font-size: 15px; font-weight: bold;">Facilities provided:</p>
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-            <input type="checkbox" id="switch-2" class="mdl-switch__input" name="utility" value="food">   
+            <input type="checkbox" id="switch-2" class="mdl-switch__input" name="utility" value="food" <%if(p.getFOOD().equalsIgnoreCase("true")) {%>checked="checked"<%} %>>   
 <span class="mdl-checkbox__label">&nbsp;&nbsp;Food Facility</span>        
          </label>
    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
-            <input type="checkbox" id="switch-3" class="mdl-switch__input" name="utility" value="wifi">   
+            <input type="checkbox" id="switch-3" class="mdl-switch__input" name="utility" value="wifi" <%if(p.getWiFi().equalsIgnoreCase("true")) {%>checked="checked"<%} %>>   
 <span class="mdl-checkbox__label">&nbsp;&nbsp;WiFi</span>        
          </label>
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
-            <input type="checkbox" id="switch-4" class="mdl-switch__input" name="utility" value="tv">   
+            <input type="checkbox" id="switch-4" class="mdl-switch__input" name="utility" value="tv" <%if(p.getTV().equalsIgnoreCase("true")) {%>checked="checked"<%} %>>   
 <span class="mdl-checkbox__label">&nbsp;&nbsp;TV</span>        
          </label>
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
-            <input type="checkbox" id="switch-5" class="mdl-switch__input" name="utility" value="ac">   
+            <input type="checkbox" id="switch-5" class="mdl-switch__input" name="utility" value="ac" <%if(p.getAC().equalsIgnoreCase("true")) {%>checked="checked"<%} %>>   
 <span class="mdl-checkbox__label">&nbsp;&nbsp;AC</span>        
          </label> 
          </div>

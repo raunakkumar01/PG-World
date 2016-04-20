@@ -18,6 +18,7 @@ if(i>0){
 }
 else{
 	out.println("error");
+	response.sendRedirect("verify_student.jsp");
 }
 %>
 </body>
