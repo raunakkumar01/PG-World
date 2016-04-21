@@ -204,11 +204,19 @@
 	    			return false;
 	    		}
 	    	}
+	    	else{
+	    		alert("Enter only numbers.");
+	    		return false;
+	    	}
 	    	if(!isNaN(b)){
 	    		if(b!=parseInt(b) || b<0){
 	    			alert("Enter Only positive values without decimals in no of bed field.");
 	    			return false;
 	    		}
+	    	}
+	    	else{
+	    		alert("Enter only numbers.");
+	    		return false;
 	    	}
 	    	if(c<1){
 	    		alert("Enter your budget");
@@ -337,7 +345,7 @@
         
 		 </p>
 		 </div>
-		 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 44em; margin-top: 10px;">
+		 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 44em; margin-top: 10px;" onclick="return validate();">
   SEARCH
 </button>
 
