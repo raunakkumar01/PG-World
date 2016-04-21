@@ -92,6 +92,85 @@ public class SearchManager {
 		ArrayList<PG> alpg=new ArrayList<PG>();
 		
 		try{
+			/*Connection con=ConnectionFact.dbConnect();
+			String stquery = "Select * from PG";
+			PreparedStatement pst=con.prepareStatement(stquery);			
+			ResultSet rs=pst.executeQuery();*/
+			
+			System.out.println(clgname);
+			
+			for(PG p:PG.getAllPG())
+			{
+				
+				if((numb_of_occp.equals("1")&&Integer.parseInt(num_of_bed)<=Integer.parseInt(p.getB1())&&Integer.parseInt(budget)>=Integer.parseInt(p.getP1()))
+							||(numb_of_occp.equals("2")&&Integer.parseInt(num_of_bed)<=Integer.parseInt(p.getB2())&&Integer.parseInt(budget)>=Integer.parseInt(p.getP2()))
+							||(numb_of_occp.equals("3")&&Integer.parseInt(num_of_bed)<=Integer.parseInt(p.getB3())&&Integer.parseInt(budget)>=Integer.parseInt(p.getP3()))
+								)
+						if(wifi.equals(p.getWiFi())&&ac.equals(p.getAC())&&food.equals(p.getFOOD())&&tv.equals(p.getTV()))
+								alpg.add(p);
+			}
+			for(int i=0;i<alpg.size();i++)
+			{
+				System.out.println(alpg.get(i).getPGID()+"o");
+				ArrayList<Rental> r=Rental.getRental(""+alpg.get(i).getPGID());
+				
+				for(int j=0;j<r.size();j++)
+				{
+					//System.out.println(r.get(j).getUsername()+"i");
+					String clgnm=Student.getCollege(r.get(j).getUsername());
+					//college name for each student
+					//System.out.println(clgnm+"i");
+					//pgStudentsOfCollege.put(alpg.get(i).getPGID(), (pgStudentsOfCollege.get(alpg.get(i).getPGID())).getRight() + 1);
+					if(pgStudentsOfCollege.containsKey(alpg.get(i)))
+					{
+						HashMap<String,Integer> cs=pgStudentsOfCollege.get(alpg.get(i));
+						if(cs.containsKey(clgnm))
+						{
+							cs.put(clgnm,cs.get(clgnm)+1);
+						}
+						else cs.put(clgnm, 1);
+					}
+					else {
+						HashMap<String, Integer> cs=new HashMap<String, Integer>();
+						cs.put(clgnm, 1);
+						pgStudentsOfCollege.put(alpg.get(i),cs);
+					}
+					HashMap<String,Integer> cs=pgStudentsOfCollege.get(alpg.get(i)); 
+					System.out.println(clgnm+" "+cs.get(clgnm));
+				}
+			}
+		}
+		catch(Exception es){}
+		
+		//System.out.println(c.getName());
+		int x,y;
+		for (Map.Entry<PG, HashMap<String, Integer>> entryO : pgStudentsOfCollege.entrySet()) {
+			x=y=0;
+			for (Map.Entry<String, Integer> entryI : entryO.getValue().entrySet())
+			{
+				if(entryI.getKey().equalsIgnoreCase(clgname))
+					x+=entryI.getValue();
+				else{
+					if(y==0)y=entryI.getValue();
+					y=max(y,entryI.getValue());
+				}
+			}
+			System.out.println(entryO.getKey().getPGID()+" n="+x+" f="+y);
+			if(x>=y)alpgn.add(entryO.getKey());
+			else alpgf.add(entryO.getKey());
+	    }
+		//return alpg;
+	}
+	
+	
+	/*
+	
+	public void findPG(String clgname,String numb_of_occp, String num_of_bed,String budget, String pg_for,String tv,String ac,String food,String wifi,ArrayList<PG> alpgn,ArrayList<PG> alpgf,College c){
+		 
+		
+		ArrayList<PG> alpg=new ArrayList<PG>();
+		
+		try{
 			Connection con=ConnectionFact.dbConnect();
 			String stquery = "Select * from PG";
 			PreparedStatement pst=con.prepareStatement(stquery);			
@@ -163,7 +242,11 @@ public class SearchManager {
 	}
 	
 	
-	/*public static void main(String args[])
+	
+	
+	
+	
+	public static void main(String args[])
 	{
 		ArrayList<PG> alpgn=new ArrayList<PG>(),alpgf=new ArrayList<PG>();
 		SearchManager sm=new SearchManager();

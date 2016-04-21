@@ -52,6 +52,8 @@ public PG(int pGID, String ownerUnm, String pG_FOR, String addressLine,
 	this.lat = lat;
 	this.lon = lon;
 }
+
+
 public String getLat() {
 	return lat;
 }
