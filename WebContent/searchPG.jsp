@@ -24,6 +24,53 @@
     <!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
+	    function validate(){
+	    	var a=document.getElementById("sample3").value;
+	    	var b=document.getElementById("sample4").value;
+	    	var c=document.getElementById("slider2").value;
+	    	var d=document.getElementsByName("user_type");
+	    	
+	    	if(!isNaN(a)){
+	    		if(a!=parseInt(a) || a<0){
+	    			alert("Enter Only positive values without decimals in occupancy field.");
+	    			return false;
+	    		}
+	    	}
+	    	else{
+	    		alert("Enter only numbers.");
+	    		return false;
+	    	}
+	    	if(!isNaN(b)){
+	    		if(b!=parseInt(b) || b<0){
+	    			alert("Enter Only positive values without decimals in no of bed field.");
+	    			return false;
+	    		}
+	    	}
+	    	else{
+	    		alert("Enter only numbers.");
+	    		return false;
+	    	}
+	    	if(c<1){
+	    		alert("Enter your budget");
+	    		return false;
+	    	}
+	    	var flag=0;
+	    	for(var i = 0; i < d.length; i++) {
+	    	   if(d[i].checked == true) {
+	    	      flag=1;
+	    		  break;
+	    	   }
+	    	 }
+	    	 if(flag===0){
+	    	 alert("Choose one of the sex");
+	    	 return false;
+	    	 }
+ 
+	    	 return true;
+	    }
+	    
+	    </script>
+	<script type="text/javascript">
    		
 		<%//ArrayList<PG> alpg= (ArrayList)session.getAttribute("alpg");
 		College c=(College)session.getAttribute("clg");
@@ -66,7 +113,7 @@
 		           {
 		           var mapProp = {
 		             center: myCenter,
-		             zoom:15,
+		             zoom:11,
 		             mapTypeId: google.maps.MapTypeId.ROADMAP
 		             };
 					
@@ -191,53 +238,7 @@
 		{
      %>     
 	    </script>
-	    <script type="text/javascript">
-	    function validate(){
-	    	var a=document.getElementById("sample3").value;
-	    	var b=document.getElementById("sample4").value;
-	    	var c=document.getElementById("slider2").value;
-	    	var d=document.getElementsByName("user_type");
-	    	
-	    	if(!isNaN(a)){
-	    		if(a!=parseInt(a) || a<0){
-	    			alert("Enter Only positive values without decimals in occupancy field.");
-	    			return false;
-	    		}
-	    	}
-	    	else{
-	    		alert("Enter only numbers.");
-	    		return false;
-	    	}
-	    	if(!isNaN(b)){
-	    		if(b!=parseInt(b) || b<0){
-	    			alert("Enter Only positive values without decimals in no of bed field.");
-	    			return false;
-	    		}
-	    	}
-	    	else{
-	    		alert("Enter only numbers.");
-	    		return false;
-	    	}
-	    	if(c<1){
-	    		alert("Enter your budget");
-	    		return false;
-	    	}
-	    	var flag=0;
-	    	for(var i = 0; i < d.length; i++) {
-	    	   if(d[i].checked == true) {
-	    	      flag=1;
-	    		  break;
-	    	   }
-	    	 }
-	    	 if(flag===0){
-	    	 alert("Choose one of the sex");
-	    	 return false;
-	    	 }
- 
-	    	 return true;
-	    }
 	    
-	    </script>
 <title>Search PG</title>
 </head>
 
@@ -264,12 +265,23 @@
 	  <main class="mdl-layout__content">
 	  <div style="margin-left: 40em;"><p style="font-weight: bold;">College names:
 	  <select name="clgnm">
-	  <option value="IEM">IEM</option>
+	  <% ArrayList<College> alclg=College.getAllCollege();
+
+	//System.out.println("hi"+alrv.get(0).getReview());
+  
+  	//ArrayList<PGReview> alrv=(ArrayList)session.getAttribute("alrv");	 
+  for(College cl: alclg){%>
+  
+      <option value="<%=cl.getName() %>"><%=cl.getName() %></option>
+      
+    <%} %>   
+	  <!--  <option value="IEM">IEM</option>
        <option value="Heritage">Heritage</option>
        <option value="Techno">Techno</option>
        <option value="BP Poddar">BP Poddar</option>
        <option value="Jadavpur">Jadavpur</option>
        <option value="Meghnad Saha Institue of Technology">Meghnad Saha Institue of Technology</option>
+	  -->
 	  </select>
 	   </div>
 	   <!--  

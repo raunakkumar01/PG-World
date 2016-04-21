@@ -74,13 +74,13 @@
   font-size: 15px;
 }
     </style>
-    <% if(!(null == session.getAttribute("fail"))&&!(session.getAttribute("fail").equals("")))
+    <% if(!(null == session.getAttribute("fail"))&&(session.getAttribute("fail").toString().equals("fail")))
     {
-    	
+    	request.getSession().setAttribute("fail", "");
     	%>
-    	<!--  <script type="text/javascript">
+    	  <script type="text/javascript">
     	alert("Invalid Username or Password");
-    	</script>-->
+    	</script>
     	<%
     }%>
 </head>
@@ -123,6 +123,15 @@
                            	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
                            %></li><li><a href="manageprofile_houseowner.jsp">Manage Profile</a></li>
                            <%
+                    	   }
+                    	   else if(session.getAttribute("cat").toString().equalsIgnoreCase("ADMIN"))
+                    	   {
+                    		   String unm= session.getAttribute("mail").toString();
+                              	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
+                              	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
+                              %></li><li><a href="addcollege.jsp">Configure Profile</a></li>
+                              <%
+                    		   
                     	   }
                     	  }
                       }

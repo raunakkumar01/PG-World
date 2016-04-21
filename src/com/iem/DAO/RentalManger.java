@@ -11,9 +11,6 @@ public class RentalManger {
 	try{
 		
 		Connection con=ConnectionFact.dbConnect();
-		
-		
-
 		String stquery="INSERT INTO RENTAL (STUDENT_ID,PG_ID) VALUES(?,?)";
 		PreparedStatement pst1=con.prepareStatement(stquery);
 		pst1.setString(1, sid);

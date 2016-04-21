@@ -40,7 +40,7 @@ import com.iem.ConnectionFactory.ConnectionFact;
 
 public class SearchManager {
 	
-	public static ArrayList<PG> findPG(String clgname,String numb_of_occp, String num_of_bed,String budget, String pg_for,String tv,String ac,String food,String wifi){
+	/*public static ArrayList<PG> findPG(String clgname,String numb_of_occp, String num_of_bed,String budget, String pg_for,String tv,String ac,String food,String wifi){
 		ArrayList<PG> alpg=new ArrayList<PG>();
 		try{
 			Connection con=ConnectionFact.dbConnect();
@@ -60,16 +60,16 @@ public class SearchManager {
 				alpg.add(new PG(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18)));	
 				
 			}
-			/*for(int i=0;i<alpg.size();i++)
+			for(int i=0;i<alpg.size();i++)
 			{
 				System.out.println(alpg.get(i).getPGID());
-			}*/
+			}
 		}
 		catch(Exception es){}
 		return alpg;
 	}
 	
-	
+	*/
 	
 	
 	
@@ -86,7 +86,7 @@ public class SearchManager {
 	public HashMap<PG,HashMap<String,Integer>> pgStudentsOfCollege=new HashMap<PG,HashMap<String,Integer>>();
 	//Hahmap for each pg->(Hashmap for each clgname iside it->(no of students of that particular college))
 	
-	public void findPGN(String clgname,String numb_of_occp, String num_of_bed,String budget, String pg_for,String tv,String ac,String food,String wifi,ArrayList<PG> alpgn,ArrayList<PG> alpgf,College c){
+	public void findPG(String clgname,String numb_of_occp, String num_of_bed,String budget, String pg_for,String tv,String ac,String food,String wifi,ArrayList<PG> alpgn,ArrayList<PG> alpgf,College c){
 		 
 		
 		ArrayList<PG> alpg=new ArrayList<PG>();

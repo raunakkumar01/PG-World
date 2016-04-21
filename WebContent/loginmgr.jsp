@@ -14,7 +14,9 @@
 <%
 String mail=request.getParameter("mail");
 String pwd=request.getParameter("pwd");
+
 String r=UserManager.authenticate(mail, pwd);
+
 if(r.equalsIgnoreCase("HOUSE"))
 {
 	session.setAttribute("mail",mail);
@@ -29,13 +31,22 @@ else if(r.equalsIgnoreCase("STUDENT"))
 }
 else if(r.equalsIgnoreCase("FAILED"))
 {
-	session.removeAttribute("mail");
-	//session.setAttribute("fail","fail");
+	session.setAttribute("fail","fail");
+	if (mail.equalsIgnoreCase("ADMIN") && pwd.equalsIgnoreCase("ADMIN"))
+	{
+		session.setAttribute("mail","ADMIN");
+		session.setAttribute("cat","ADMIN");
+		//response.sendRedirect("Home.jsp");
+		session.setAttribute("fail","");
+	}
+	//session.removeAttribute("mail");
+	
 	
 	
 	response.sendRedirect("Home.jsp");
 	
 }
+
 
 %>
 

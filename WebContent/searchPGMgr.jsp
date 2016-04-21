@@ -43,7 +43,7 @@ ArrayList<PG> alpgn=new ArrayList<PG>(),alpgf=new ArrayList<PG>();
 //SearchManager.findPG(clgname, numb_of_occp, num_of_bed, budget, pg_for, tv, ac, food, wifi);
 SearchManager sm=new SearchManager();
 College c=null;
-sm.findPGN(clgname, numb_of_occp, num_of_bed, budget, pg_for, tv, ac, food, wifi,alpgn,alpgf,c);
+sm.findPG(clgname, numb_of_occp, num_of_bed, budget, pg_for, tv, ac, food, wifi,alpgn,alpgf,c);
 c=College.getCollege(clgname);
 /*for(int i=0;i<alpg.size();i++)
 {

@@ -3,6 +3,7 @@ package com.iem.BEAN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.iem.ConnectionFactory.ConnectionFact;
 
@@ -102,6 +103,24 @@ public class College {
 		}
 		catch(Exception es){}
 		return c;
+	}
+	public static ArrayList<College> getAllCollege()
+	{
+		ArrayList<College> alclg=new ArrayList<College>();
+		try{
+			Connection con=ConnectionFact.dbConnect();
+			String stquery = "Select * from PG_COLLEGE";
+			PreparedStatement pst=con.prepareStatement(stquery);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next())
+			{
+				alclg.add(new College(rs.getString("College_Name"),rs.getString("LAT"),rs.getString("LON")));
+			}
+			
+		}
+		catch(Exception es){return null;}
+		return alclg;
 	}
 
 }

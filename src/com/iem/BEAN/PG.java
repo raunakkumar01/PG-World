@@ -3,6 +3,7 @@ package com.iem.BEAN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.iem.ConnectionFactory.ConnectionFact;
 
@@ -176,5 +177,22 @@ public static PG getPG(int pgid)
 	catch(Exception es){return null;}
 	
 }
-
+public static ArrayList<PG> getAllPG()
+{
+	ArrayList<PG> alpg=new ArrayList<PG>();
+	try{
+		Connection con=ConnectionFact.dbConnect();
+		String stquery = "Select * from PG";
+		PreparedStatement pst=con.prepareStatement(stquery);
+		ResultSet rs=pst.executeQuery();
+		
+		while(rs.next())
+		{
+			alpg.add(new PG(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18)));	
+		}
+		
+	}
+	catch(Exception es){return null;}
+	return alpg;
+}
 }

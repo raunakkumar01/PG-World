@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import= "java.util.Collections"    import="com.iem.BEAN.*" import="java.util.ArrayList"%>
+    pageEncoding="ISO-8859-1" import="com.iem.BEAN.PGReview" import= "java.util.Collections"    import="com.iem.BEAN.*"  import="com.iem.DAO.ReviewManager" import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,6 +7,16 @@
 <title>Search</title>
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
 <script type="text/javascript" src="js/material.min.js"></script>
+ </style>
+    <% if(!(null == session.getAttribute("rvfail"))&&(session.getAttribute("rvfail").toString().equals("fail")))
+    {
+    	request.getSession().setAttribute("rvfail", "");
+    	%>
+    	  <script type="text/javascript">
+    	alert("Not authorized");
+    	</script>
+    	<%
+    }%>
 <style>
 .demo-card-wide.mdl-card {
   width: 712px;
@@ -45,8 +55,7 @@ table {
 	<% 
 	PG p=(PG)request.getSession().getAttribute("pgdet");
 	HouseOwner h=(HouseOwner)request.getSession().getAttribute("hodet");
-	
-	
+	System.out.println(p.getPGID());	
 	%>
 	<section>
     <div class="demo-card-wide mdl-card mdl-shadow--6dp">
@@ -62,7 +71,7 @@ table {
   </div>
 	</section>
 	
-	<form action="#">
+	<form method="post" action="reviewmgr.jsp">
 	        <div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--4-col">
             <ul>
@@ -150,9 +159,30 @@ table {
 			
 			</div>
 			<!-- Accent-colored raised button -->
+			<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--4-col">
+			
+			 
+                      
+			</div>
+			<div class="mdl-cell mdl-cell--4-col">
+			ADD REVIEW:<br>
+			<p style="font-weight: bold;">Rate:
+		  <select name="rate">
+		  <option value="*">*</option>
+	       <option value="**">**</option>
+	       <option value="***">***</option>
+	       <option value="****">****</option>
+	       <option value="*****">*****</option>
+		  </select>
+		   
+			<textarea  rows="4" cols="50" name="rvw" value=""></textarea>
+			<input type="hidden" id="myInp" name="pgid" value="<%=p.getPGID()%>">
+			</div></div>
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">
   ADD PG REVIEW
 </button>
+			
 
 			
 			
@@ -164,23 +194,24 @@ table {
   <thead>
     <tr>
       <th>Student Username</th>
-      <th class="mdl-data-table__cell--non-numeric">Review</th>
-      <th class="mdl-data-table__cell--non-numeric">Link to the details page</th>
+      <th class="mdl-data-table__cell--non-numeric">Rate</th>
+      <th class="mdl-data-table__cell--non-numeric">Review About PG Facilities</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>sk@m.c</td>
-      <td class="mdl-data-table__cell--non-numeric">Good</td>
+  <% ArrayList<PGReview> alrv=PGReview.getReview(""+p.getPGID());
+
+	//System.out.println("hi"+alrv.get(0).getReview());
+  
+  	//ArrayList<PGReview> alrv=(ArrayList)session.getAttribute("alrv");	 
+  for(PGReview pr: alrv){%>
+  <tr>
+      <td><%=pr.getUsername() %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%=pr.getRate() %></td>
       
-      <td class="mdl-data-table__cell--non-numeric"><a href="pg001.html">pg001</a></td>
+      <td class="mdl-data-table__cell--non-numeric"><%=pr.getReview() %></td>
     </tr>
-    <tr>
-      <td>rm@m.c</td>
-      <td class="mdl-data-table__cell--non-numeric">Nice</td>
-      
-      <td class="mdl-data-table__cell--non-numeric"><a href="pg001.html">pg002</a></td>
-    </tr>
+    <%} %>   
     
   </tbody>
 </table>
