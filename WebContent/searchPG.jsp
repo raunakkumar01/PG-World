@@ -191,6 +191,45 @@
 		{
      %>     
 	    </script>
+	    <script type="text/javascript">
+	    function validate(){
+	    	var a=document.getElementById("sample3").value;
+	    	var b=document.getElementById("sample4").value;
+	    	var c=document.getElementById("slider2").value;
+	    	var d=document.getElementsByName("user_type");
+	    	
+	    	if(!isNaN(a)){
+	    		if(a!=parseInt(a) || a<0){
+	    			alert("Enter Only positive values without decimals in occupancy field.");
+	    			return false;
+	    		}
+	    	}
+	    	if(!isNaN(b)){
+	    		if(b!=parseInt(b) || b<0){
+	    			alert("Enter Only positive values without decimals in no of bed field.");
+	    			return false;
+	    		}
+	    	}
+	    	if(c<1){
+	    		alert("Enter your budget");
+	    		return false;
+	    	}
+	    	var flag=0;
+	    	for(var i = 0; i < d.length; i++) {
+	    	   if(d[i].checked == true) {
+	    	      flag=1;
+	    		  break;
+	    	   }
+	    	 }
+	    	 if(flag===0){
+	    	 alert("Choose one of the sex");
+	    	 return false;
+	    	 }
+ 
+	    	 return true;
+	    }
+	    
+	    </script>
 <title>Search PG</title>
 </head>
 

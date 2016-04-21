@@ -25,8 +25,46 @@
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
+        	
+        	var a=document.getElementById("text14").value;
+        	var b=document.getElementById("text6").value;
+        	if(a.length >0 ){
+        	if(b.length >0){
+        			var x=document.getElementById("text2");
+        			var y=x.value;
+        			if(!isNaN(y)){
+        			if(y.length <6 || y.length>6){
+        			alert("Enter pin of 6 digits");
+        			x.value="";
+        			document.getElementById("text2").focus();
+        			}
+        			else{
+        				if(y==parseInt(y)){
+        					geocodeAddress(geocoder, map);
+        				}
+        				else{
+        					alert("No decimals please.");
+        					x.value="";
+                			document.getElementById("text2").focus();
+        				}
+        				
+        				
+        			}
+        			}
+        			else{
+        			alert("Enter digits only");
+        			x.value="";
+        			document.getElementById("text2").focus();
+        			}
+        		}
+        	else{
+        		alert("ENTER CITY NAME");
+        	}
+        	}
+        	else{
+        		alert("ENTER COLLEGE NAME");
+        	}
+        	        });
       }
 
       function geocodeAddress(geocoder, resultsMap) {
