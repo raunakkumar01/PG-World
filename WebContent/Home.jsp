@@ -129,7 +129,7 @@
                     		   String unm= session.getAttribute("mail").toString();
                               	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
                               	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
-                              %></li><li><a href="addcollege.jsp">Configure Profile</a></li>
+                              %></li><li><a href="addcollege.jsp">Configure College</a></li>
                               <%
                     		   
                     	   }

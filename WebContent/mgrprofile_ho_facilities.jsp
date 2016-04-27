@@ -78,7 +78,7 @@ table {
     			 alert("ENTER ONLY POSITIVE VALUES");
     			 return false;
     		 }
-    		 if(x!==b2 || y!==p2){
+    		 if(x!=b2 || y!=p2){
      			alert(" DO NOT ENTER DECIMALS");
     			 return false;
      		}
@@ -95,7 +95,7 @@ table {
     			 alert("ENTER ONLY POSITIVE VALUES");
     			 return false;
     		 }
-    		 if(x!==b3 || y!==p3){
+    		 if(x!=b3 || y!=p3){
      			alert(" DO NOT ENTER DECIMALS");
     			 return false;
      		}

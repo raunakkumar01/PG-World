@@ -37,8 +37,10 @@ if (facilities!= null)
 }
 
 String pg_for=request.getParameter("user_type");
+
+PG dataOfPreviousPage=new PG(0,"",pg_for,"","","",wifi,ac,food,tv,numb_of_occp,num_of_bed,budget,"","","","","");
 //String unm=session.getAttribute("mail").toString();
-System.out.println(clgname+"jsp "+wifi);
+System.out.println(clgname+"jsp now "+wifi);
 ArrayList<PG> alpgn=new ArrayList<PG>(),alpgf=new ArrayList<PG>();
 //SearchManager.findPG(clgname, numb_of_occp, num_of_bed, budget, pg_for, tv, ac, food, wifi);
 SearchManager sm=new SearchManager();
@@ -49,7 +51,7 @@ c=College.getCollege(clgname);
 {
 	System.out.println(alpg.get(i).getPGID());
 }*/
-System.out.print(c.getName()+"getting it");
+System.out.println(c.getName()+"getting it");
 
 if (alpgn.size()>0||alpgf.size()>0||c!=null)
 {
@@ -60,8 +62,9 @@ if (alpgn.size()>0||alpgf.size()>0||c!=null)
 	request.getSession().setAttribute("alpgn", alpgn);
 	request.getSession().setAttribute("alpgf", alpgf);
 	request.getSession().setAttribute("pgStudentsOfCollege", sm.pgStudentsOfCollege);
+	request.getSession().setAttribute("prvVal", dataOfPreviousPage);
 	System.out.println("success");
-	response.sendRedirect("searchPG.jsp");
+	response.sendRedirect("searchPGN.jsp");
 }
 else 
 {

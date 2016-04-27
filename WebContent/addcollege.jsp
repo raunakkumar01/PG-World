@@ -119,7 +119,11 @@
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
-            
+             <!-- Navigation -->
+            <nav class="mdl-navigation">
+               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>
+               <a class="mdl-navigation__link" href="" style="color:white">About</a>      
+            </nav>
          </div>
       </header>
 	  

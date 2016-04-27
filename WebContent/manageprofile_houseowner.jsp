@@ -88,7 +88,7 @@ while(rs1.next())
 </button>
 </form>
 <form action ="verify_student.jsp" method="post">
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 42em; margin-top: 10px;">
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em; margin-top: 10px;">
   VERIFY STUDENT
 </button>
 </form>
@@ -110,7 +110,7 @@ while(rs1.next())
   %>
     <tr>
     <form action="PGMgr.jsp" method="post">
-      <td><input type="text" name="pgd" value=<%=rb.get(i).getPgid()%> /></td>
+      <td><input type="text" name="pgd" value=<%=rb.get(i).getPgid()%> readonly /></td>
       <td><%=rb.get(i).getAddress()%></td>
       <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
   EDIT DETAILS

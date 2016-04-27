@@ -401,6 +401,7 @@
 			      {
 				    	   adrs=adrs+"$"+alpgf.get(i).getLat()+","+alpgf.get(i).getLon()+","+alpgf.get(i).getPGID()+":";//"22.574470,88.433813"+"$"+"22.5735314,88.43311889999995";//
 				    	   
+				    	   if(pgStudentsOfCollege.containsKey(alpgf.get(i)))
 				    	   for (Map.Entry<String, Integer> entryI : pgStudentsOfCollege.get(alpgf.get(i)).entrySet())
 							{
 								adrs+="<br>"+entryI.getKey()+"->"+entryI.getValue();
