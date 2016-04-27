@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.iem.ConnectionFactory.ConnectionFact" import="java.sql.*" 
-    import="com.iem.DAO.UserManager" import="com.iem.BEAN.PGIndex" import="java.util.ArrayList"%>
+    import="com.iem.DAO.UserManager" import="com.iem.BEAN.*" import="java.util.ArrayList"%>
     <%-- 
   - Author: Shamik Kundu
   - Description: landing page of houseowner after logging in where he/she can see the list of his already added PGs.
@@ -35,7 +35,8 @@ table {
 <body>
 <%
 String unm=session.getAttribute("mail").toString();
-Connection con=ConnectionFact.dbConnect();
+HouseOwner hs=HouseOwner.showDetails(unm);
+/*Connection con=ConnectionFact.dbConnect();
 String stquery2="SELECT CONTACT_NO FROM PG_HOUSE_OWNER WHERE USERNAME=?";
 String stquery3="SELECT NAME FROM PG_USER WHERE USERNAME=?";
 PreparedStatement pst=con.prepareStatement(stquery2);
@@ -51,7 +52,7 @@ pst1.setString(1, unm);
 ResultSet rs1=pst1.executeQuery();
 //pst1.close();
 while(rs1.next())
-	k1=rs1.getString("NAME");
+	k1=rs1.getString("NAME");*/
 %>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -74,9 +75,9 @@ while(rs1.next())
     <h2 class="mdl-card__title-text"></h2>
 	<h3>Houseowner details</h3>
 	<ol>
-	<li>Name: <%=k1 %></li>
+	<li>Name: <%=hs.getName() %></li>
 	<li>Email:<%= unm %></li>
-	<li>Contact Number: <%=k %></li>
+	<li>Contact Number: <%=hs.getContact_no() %></li>
 	</ol>
   </div>
   </div>

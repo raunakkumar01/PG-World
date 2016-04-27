@@ -48,4 +48,26 @@ public class HouseOwner extends User{
     	}
     	catch(Exception es){return null;}
     }
+    public static HouseOwner showDetails(String unm){
+    	HouseOwner h=null;
+    	try{
+    	Connection con=ConnectionFact.dbConnect();
+    	String stquery2="SELECT CONTACT_NO FROM PG_HOUSE_OWNER WHERE USERNAME=?";
+    	String stquery3="SELECT NAME FROM PG_USER WHERE USERNAME=?";
+    	PreparedStatement pst=con.prepareStatement(stquery2);
+    	PreparedStatement pst1=con.prepareStatement(stquery3);
+    	pst.setString(1, unm);
+    	pst1.setString(1, unm);
+    	ResultSet rs1=pst1.executeQuery();
+    	ResultSet rs=pst.executeQuery();
+    	String k="";
+    	String k1="";
+    	while(rs.next())
+    		k=rs.getString("CONTACT_NO");
+    	while(rs1.next())
+    		k1=rs1.getString("NAME");
+    	h=new HouseOwner(unm,"xyz",k1,"HouseOwner",k);
+    	}catch(Exception es){es.printStackTrace();}
+    	return h;
+    }
 }

@@ -3,7 +3,9 @@ package com.iem.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import com.iem.BEAN.PG;
 import com.iem.ConnectionFactory.ConnectionFact;
 
 public class RentalManger {
@@ -50,5 +52,12 @@ public class RentalManger {
 		catch(Exception es){}
 		return 0;
 	}
-
+   
+	/*public static int[] find_pg_id(String unm){
+		int[] pgid;
+		pgid=PG.get_pg_id(unm);
+		
+		return pgid;
+	}*/
+	
 }

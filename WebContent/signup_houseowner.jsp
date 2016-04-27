@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css "href="css/material.css">
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
-<title>Configure College</title>
+<title>ADD PG</title>
 <script>
     var lat1;
     var lng1;
