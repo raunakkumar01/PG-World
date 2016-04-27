@@ -32,6 +32,98 @@ table {
 }
 
 </style>
+<script type="text/javascript">
+    function validate(){
+   /* var a=document.getElementsByName("audi");
+    var flag=0;
+    for(var i = 0; i < a.length; i++) {
+       if(a[i].checked == true) {
+          flag=1;
+    	  break;
+       }
+     }
+     if(flag===0){
+     alert("Choose one of the gender");
+     return false;
+     }*/
+     var b1=document.getElementById("b1").value;
+     var p1=document.getElementById("p1").value;
+     var b2=document.getElementById("b2").value;
+     var p2=document.getElementById("p2").value;
+     var b3=document.getElementById("b3").value;
+     var p3=document.getElementById("p3").value;
+     if((b1.length>0&&p1.length>0) || (b2.length>0&&p2.length>0) ||(b3.length>0&&p3.length>0)){
+    	 if(b1.length>0 && p1.length>0){
+    		 var x=parseInt(b1);
+    		 var y=parseInt(p1);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
+    		if(x!=b1 || y!=p1){
+    			alert(" DO NOT ENTER DECIMALS");
+   			 return false;
+    		}
+    
+    	 }
+    	 if(b2.length>0 && p2.length>0){
+    		 var x=parseInt(b2);
+    		 var y=parseInt(p2);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
+    		 if(x!=b2 || y!=p2){
+     			alert(" DO NOT ENTER DECIMALS");
+    			 return false;
+     		}
+    		 
+    	 }
+    	 if(b3.length>0 && p3.length>0){
+    		 var x=parseInt(b3);
+    		 var y=parseInt(p3);
+    		 if(isNaN(x) || isNaN(y)){
+    			 alert("ENTER ONLY NUMBERS");
+    			 return false;
+    		 }
+    		 if(x<0 || y<0){
+    			 alert("ENTER ONLY POSITIVE VALUES");
+    			 return false;
+    		 }
+    		 if(x!=b3 || y!=p3){
+     			alert(" DO NOT ENTER DECIMALS");
+    			 return false;
+     		}
+    	 }
+     }
+     else{
+    	 alert("ENTER ANY ONE TYPE OF BED AND ITS COST");
+    	 return false;
+     }
+     if(b1.length <1 && p1.length <1){
+    	 document.getElementById("b1").value="0";
+    	 document.getElementById("p1").value="0";
+     }
+     if(b2.length <1 && p2.length <1){
+    	 document.getElementById("b2").value="0";
+    	 document.getElementById("p2").value="0";
+    	 }
+     if(b3.length <1 && p3.length <1){
+    	 document.getElementById("b3").value="0";
+    	 document.getElementById("p3").value="0";
+     }
+     return true;
+    }
+       
+    </script>
 </head>
 <body>
 <% 
@@ -97,18 +189,18 @@ request.getSession().setAttribute("cat","Houseowner");
   <tbody>
     <tr>
       <td>1</td>
-      <td><input type="text"  style="width:30px;" name="b1" value="<%=p.getB1()%>"></td>
-      <td><input type="text"  style="width: 50px;" name="p1" value="<%=p.getP1() %>"></td>
+      <td><input type="text"  style="width:30px;" name="b1" id="b1"  value="<%=p.getB1()%>"></td>
+      <td><input type="text"  style="width: 50px;" name="p1" id="p1" value="<%=p.getP1() %>"></td>
     </tr>
     <tr>
       <td>2</td>
-      <td><input type="text" style="width: 30px;" name="b2" value="<%=p.getB2() %>"></td>
-      <td><input type="text" style="width: 50px;" name="p2" value="<%=p.getP2() %>"></td>
+      <td><input type="text" style="width: 30px;" name="b2" id="b2" value="<%=p.getB2() %>"></td>
+      <td><input type="text" style="width: 50px;" name="p2" id="p2" value="<%=p.getP2() %>"></td>
     </tr>
     <tr>
       <td>3</td>
-      <td><input type="text"  style="width: 30px;" name="b3" value="<%=p.getB3() %>"></td>
-      <td><input type="text"  style="width: 50px;" name="p3" value="<%=p.getP3() %>"></td>
+      <td><input type="text"  style="width: 30px;" name="b3" id="b3" value="<%=p.getB3() %>"></td>
+      <td><input type="text"  style="width: 50px;" name="p3" id="p3" value="<%=p.getP3() %>"></td>
     </tr>
   </tbody>
 </table>
@@ -137,7 +229,7 @@ request.getSession().setAttribute("cat","Houseowner");
 
 </div>
 <!-- Accent-colored raised button -->
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;" onclick="return validate();">
   UPDATE PG DETAILS
 </button>
 
