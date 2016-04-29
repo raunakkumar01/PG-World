@@ -13,12 +13,18 @@ String pgid=request.getParameter("pgid");
 out.println(sid);
 out.println(pgid);
 int i=RentalManger.verify(sid, pgid);
+
+System.out.println("ret"+i);
+
 if(i>0){
+	request.getSession().setAttribute("vsfail", "success");
 	response.sendRedirect("verify_student.jsp");
 }
 else{
-	out.println("error");
+	request.getSession().setAttribute("vsfail", "fail");
+	response.sendRedirect("verify_student.jsp");
 }
+%>
 %>
 
 </body>

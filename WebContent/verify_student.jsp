@@ -17,6 +17,18 @@
 <title>Manage Profile: House owner</title>
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
 
+<% if(!(null == session.getAttribute("vsfail"))&&(session.getAttribute("vsfail").toString().equals("fail")))
+		{
+			request.getSession().setAttribute("vsfail", "");
+			%>
+			  <script type="text/javascript">
+			  alert("Incorrect Data");
+			  </script>
+			<%
+		}%>
+
+
+
 <script type="text/javascript">
 /*function validate1(){
 	var a=document.getElementById("text142").value;

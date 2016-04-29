@@ -50,6 +50,38 @@ public static ArrayList<Rental> getRental(String pgid)
 	catch(Exception es){}
 	return alren;
 }
+public static int addRental(String sid,String pgid)
+{
+	
+	try{
+	
+	Connection con=ConnectionFact.dbConnect();
+	String stquery="INSERT INTO RENTAL (STUDENT_ID,PG_ID) VALUES(?,?)";
+	PreparedStatement pst1=con.prepareStatement(stquery);
+	pst1.setString(1, sid);
+	pst1.setString(2, pgid);
+	
+	int val=pst1.executeUpdate();
+	return val;
+	
+	}
+	catch(Exception es){return 0;}
+	
 
-
+}
+public static int  delete( String sid,String pgid){
+	try{
+		
+		Connection con=ConnectionFact.dbConnect();
+		String stquery="DELETE FROM RENTAL WHERE STUDENT_ID =? AND PG_ID=?";
+		PreparedStatement pst1=con.prepareStatement(stquery);
+		pst1.setString(1, sid);
+		pst1.setString(2, pgid);
+		
+		int val=pst1.executeUpdate();
+		return val;
+	}
+	catch(Exception es){return 0;}
+}	
+	
 }

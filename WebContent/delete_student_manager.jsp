@@ -14,10 +14,11 @@ out.println(sid);
 out.println(pgid);
 int i=RentalManger.delete(sid, pgid);
 if(i>0){
+	request.getSession().setAttribute("vsfail", "success");
 	response.sendRedirect("verify_student.jsp");
 }
 else{
-	out.println("error");
+	request.getSession().setAttribute("vsfail", "fail");
 	response.sendRedirect("verify_student.jsp");
 }
 %>

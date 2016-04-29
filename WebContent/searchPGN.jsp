@@ -30,6 +30,15 @@
 	    	var c=document.getElementById("slider2").value;
 	    	var d=document.getElementsByName("user_type");
 	    	
+	    	if(a.length <1){
+	        	 document.getElementById("sample3").value="0";
+	        	 a="0";
+	         }
+	    	if(b.length <1){
+	        	 document.getElementById("sample4").value="0";
+	        	 b="0";
+	         }
+	    	
 	    	if(!isNaN(a)){
 	    		if(a!=parseInt(a) || a<0){
 	    			alert("Enter Only positive values without decimals in occupancy field.");
