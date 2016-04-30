@@ -125,7 +125,7 @@ while(rs1.next())
 			<!-- Accent-colored raised button -->
 			
 	
-<form action="verify_student_manager.jsp" method="post" style="padding-left:23em;">
+<form action="verify_student_manager.jsp" method="post" style="padding-left:32em;">
 <!--  Student_ID:<input type="text" name="studentid"  />
 PG_ID:<input type="text" name="pgid" />
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">
@@ -171,9 +171,9 @@ PG_ID:<input type="text" name="pgid" />
 
 
           
-          <h3 style="margin-left: 450px;">List of Already added PGs</h3>
+          <h3 style="margin-left: 450px;">List of Verified Students</h3>
           
-          <table class="mdl-data-table mdl-js-data-table" style="margin-top:30px; margin-left: 430px; margin-bottom: 60px;" id="mytable" name="table">
+          <table class="mdl-data-table mdl-js-data-table" style="margin-top:30px; margin-left: 500px; margin-bottom: 60px;" id="mytable" name="table">
   
     <tr>
     <th>STUDENT ID</th>
@@ -202,7 +202,7 @@ PG_ID:<input type="text" name="pgid" />
 </table>
 
 
-<form action="delete_student_manager.jsp" method="post" style="padding-left:23em;">
+<form action="delete_student_manager.jsp" method="post" style="padding-left:32em;">
 <!--  Student_ID:<input type="text" name="studentid"  />
 PG_ID:<input type="text" name="pgid" />
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">

@@ -115,14 +115,13 @@
       <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">ADD PG DETAILS</span>
+            <span class="mdl-layout-title">ADD COLLEGE DETAILS</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
              <!-- Navigation -->
             <nav class="mdl-navigation">
-               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>
-               <a class="mdl-navigation__link" href="" style="color:white">About</a>      
+               <a class="mdl-navigation__link" href="Home.jsp" style="color:white">Home</a>     
             </nav>
          </div>
       </header>

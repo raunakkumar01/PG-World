@@ -96,7 +96,7 @@ while(rs1.next())
           
           <h3 style="margin-left: 450px;">List of Already added PGs</h3>
           
-          <table class="mdl-data-table mdl-js-data-table" style="margin-top:30px; margin-left: 430px; margin-bottom: 60px;">
+          <table class="mdl-data-table mdl-js-data-table" style="margin-top:30px; margin-left: 380px; margin-bottom: 60px;">
   <thead>
     <tr>
       <th>PG ID</th>

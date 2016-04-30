@@ -47,8 +47,7 @@ table {
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
             <nav class="mdl-navigation">
-               <a class="mdl-navigation__link" href="gotohome1.jsp" style="color:white">Home</a>
-               <a class="mdl-navigation__link" href="" style="color:white">About</a>      
+               <a class="mdl-navigation__link" href="gotohome1.jsp" style="color:white">Home</a>    
             </nav>
          </div>
       </header>

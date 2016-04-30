@@ -144,7 +144,6 @@
       <div class="container">
         <h1>Find a place to stay.</h1>
         <p>Join us for a pleasant, trust-worthy and seamless solution.</p>
-        <a href="#">Learn More</a>
       </div>
     </div>
     
