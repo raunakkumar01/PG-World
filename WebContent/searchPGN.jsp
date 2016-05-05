@@ -11,6 +11,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css "href="css/material.min.css">
 <link rel="stylesheet" type="text/css "href="css/material.css">
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
 <script langauage="javascript">
@@ -243,7 +246,7 @@
 			    
 			    <title>Search PG</title>
 			    </head>
-			    <body onload="doshow();">
+			    <body id="content" onload="doshow();">
 	    <%
         }
 		
@@ -257,7 +260,7 @@
 <title>Search PG</title>
 </head>
 
-<body >
+<body id="content" >
 <%} %>
 
 

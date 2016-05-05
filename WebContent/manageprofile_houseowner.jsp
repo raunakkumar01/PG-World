@@ -9,9 +9,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="js/pace.js"></script>
+  <link href="css/pace.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Manage Profile: House owner</title>
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <script type="text/javascript" src="js/material.min.js"></script>
 <style>
 .demo-card-wide.mdl-card {
@@ -32,7 +37,7 @@ table {
 
 </style>
 </head>
-<body>
+<body id="content">
 <%
 String unm=session.getAttribute("mail").toString();
 HouseOwner hs=HouseOwner.showDetails(unm);
@@ -55,7 +60,7 @@ while(rs1.next())
 	k1=rs1.getString("NAME");*/
 %>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
+      <header class="mdl-layout__header" style="position:fixed;marhin-bottom:30px;">
          <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title">PG World</span>
@@ -70,7 +75,7 @@ while(rs1.next())
       </header>
 	
 	<section>
-    <div class="demo-card-wide mdl-card mdl-shadow--6dp">
+    <div class="demo-card-wide mdl-card mdl-shadow--6dp" style="padding-top:30px">
     <div class="mdl-card__title">
     <h2 class="mdl-card__title-text"></h2>
 	<h3>Houseowner details</h3>

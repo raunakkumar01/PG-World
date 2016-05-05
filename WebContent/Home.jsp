@@ -7,6 +7,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+  <script src="js/pace.js"></script>
+  <link href="css/pace.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="main.css">
     <title>PG WORLD: Home</title>
@@ -89,22 +92,21 @@
  <div class="nav">
       <div class="container">
         <ul class="pull-left">
-          <li style="font-weight:bold;color:blue;">PG WORLD</li>
+          <li style="font-weight:bold;color:rgb(0,64,128); font-size:50px;">PG WORLD</li>
           
         </ul>
         <ul class="pull-right">
-          <li> 
           <%if(null == session.getAttribute("mail"))
         	  {
                     	  
                          %>
                    <form class="navbar-form navbar-right" role="form" method="post" action="loginmgr.jsp">
                         <div class="form-group">
-                            <input type="text" required="required" maxlength="15" name="mail" class="form-control" placeholder="Username" />
-                            <input type="password" required="required" maxlength="15" name="pwd" class="form-control" placeholder="Password" />
+                           <li> <input type="text" required="required" maxlength="15" name="mail" class="form-control" placeholder="Username" /></li>
+                            <li><input type="password" required="required" maxlength="15" name="pwd" class="form-control" placeholder="Password" /></li>
                         </div>
-                        <button type="submit" class="btn btn-default">Log In</button></li>
-                          <li><a href="SignUp.jsp">Sign Up</a></li> 
+                       <li> <button type="submit" class="btn btn-default">Log In</button></li>
+                          <li><a href="SignUp.jsp" class="btn btn-info" role="button">Sign Up</a></li> 
                    </form>
                     <%
                       }
@@ -112,24 +114,28 @@
                     	if(session.getAttribute("cat").toString().equalsIgnoreCase("STUDENT"))
                         {
                     	String unm= session.getAttribute("mail").toString();
-                    	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
-                    	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
-                    %></li><li><a href="searchPG.jsp">Search</a></li>
+                    	out.println("<li><a href=\"searchPG.jsp\" class=\"btn btn-info\" role=\"button\">Search</a></li>");
+                    	out.println("<li><div class=\"navbar-brand navbar-right\">Hi "+unm+"</li>");
+                    	out.println("<li><a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div></li>");
+                    %>
                     <%} else
                           {
                     	   if(session.getAttribute("cat").toString().equalsIgnoreCase("HOUSEOWNER")){
                     		 String unm= session.getAttribute("mail").toString();
-                           	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
-                           	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
-                           %></li><li><a href="manageprofile_houseowner.jsp">Manage Profile</a></li>
+                    		 out.println("<li><a href=\"manageprofile_houseowner.jsp\" class=\"btn btn-info\" role=\"button\">Manage Profile</a></li>");
+                           	out.println("<li><div class=\"navbar-brand navbar-right\">Hi "+unm+"</li>");
+                           	out.println("<li><a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div><li>");
+                           	
+                           %>
                            <%
                     	   }
                     	   else if(session.getAttribute("cat").toString().equalsIgnoreCase("ADMIN"))
                     	   {
                     		   String unm= session.getAttribute("mail").toString();
-                              	out.println("<div class=\"navbar-brand navbar-right\">Hi "+unm);
-                              	out.println("<a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div>");
-                              %></li><li><a href="addcollege.jsp">Configure College</a></li>
+                    		   out.println("<li><a href=\"addcollege.jsp\" class=\"btn btn-info\" role=\"button\">Configure College</a></li>");
+                              	out.println("<li><div class=\"navbar-brand navbar-right\">Hi "+unm+"</li>");
+                              	out.println("<li><a href=\"logout.jsp\" class=\"btn btn-warning\">LogOut</a></div><li>");
+                              %>
                               <%
                     		   
                     	   }

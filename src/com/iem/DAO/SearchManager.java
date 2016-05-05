@@ -52,6 +52,9 @@ public class SearchManager {
 								}
 			}
 			
+			//Bug 12 - Searching not working properly
+			//Modified so that pg with no students are also shown
+			
 			for(int i=0;i<alpg.size();i++)
 			{
 				System.out.println(alpg.get(i).getPGID()+"oyesRental");

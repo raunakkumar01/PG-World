@@ -61,11 +61,11 @@ public class User {
 				PreparedStatement pst=con.prepareStatement(stquery2);
 				pst.setString(1, mail);
 				ResultSet rs=pst.executeQuery();
-				System.out.println("hi from user: first sql statement is working fine!");
+				//System.out.println("hi from user: first sql statement is working fine!");
 				while(rs.next()){
 				 as=(new User(rs.getString("USERNAME"),rs.getString("PWD"),rs.getString("NAME"),rs.getString("CATEGORY")));
 				}
-				System.out.println("hi from user: second sql statement is working fine!");
+				//System.out.println("hi from user: second sql statement is working fine!");
 				}
 		        catch(Exception es){es.printStackTrace();}
 				

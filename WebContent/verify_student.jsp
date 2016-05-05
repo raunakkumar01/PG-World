@@ -9,8 +9,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="js/pace.js"></script>
+  <link href="css/pace.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css "href="css/material.min.css">
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <link rel="stylesheet" type="text/css "href="css/material.css">
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
@@ -72,7 +77,7 @@ table {
 
 </style>
 </head>
-<body>
+<body id="content">
 <%
 String unm=session.getAttribute("mail").toString();
 HouseOwner hs=HouseOwner.showDetails(unm);
@@ -124,18 +129,10 @@ while(rs1.next())
 	</section>
 			<!-- Accent-colored raised button -->
 			
-	
+	<!--  Bug 14 - Problem in Authenticate student details   
+			With the help of combo box option for student id and pg id in the page the problem was resolved-->
 <form action="verify_student_manager.jsp" method="post" style="padding-left:32em;">
-<!--  Student_ID:<input type="text" name="studentid"  />
-PG_ID:<input type="text" name="pgid" />
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 40em;">
-  ADD STUDENT
-</button>   -->
-             <!--   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
-               <input class="mdl-textfield__input" type="text" id="text142" name="studentid">
-               <label class="mdl-textfield__label" for="text142">Student ID</label>
-            </div>
-             -->
+
              <select style="width:10em" name="studentid">
         <%
       // System.out.println(unm);

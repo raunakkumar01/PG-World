@@ -10,6 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Manage Profile: House owner</title>
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <script type="text/javascript" src="js/material.min.js"></script>
 <style>
 .demo-card-wide.mdl-card {
@@ -122,7 +125,7 @@ table {
     
     </script>
 </head>
-<body>
+<body id="content">
 <% 
 String unm=session.getAttribute("mail").toString();
 Connection con=ConnectionFact.dbConnect();

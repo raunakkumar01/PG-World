@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search</title>
 <link rel="stylesheet" type="text/css" href="css/material.min.css" />
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <script type="text/javascript" src="js/material.min.js"></script>
  </style>
     <% if(!(null == session.getAttribute("rvfail"))&&(session.getAttribute("rvfail").toString().equals("fail")))
@@ -37,7 +40,7 @@ table {
 </style>
 </head>
  
-<body>
+<body id="content">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">

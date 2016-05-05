@@ -7,6 +7,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="js/pace.js"></script>
+  <link href="css/pace.css" rel="stylesheet" />
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
@@ -57,7 +62,7 @@
       }
     </script>
 </head>
-<body>
+<body id="content">
  <form action="signupmgr.jsp" method="post">
       
         <h1>Sign Up</h1>

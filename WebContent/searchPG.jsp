@@ -8,9 +8,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script src="js/pace.js"></script>
+  <link href="css/pace.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css "href="css/material.min.css">
 <link rel="stylesheet" type="text/css "href="css/material.css">
+<style>
+#content{background-image: url("images/bg.jpg"); }
+</style>
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
 <script langauage="javascript">
@@ -238,7 +243,7 @@
 			    
 			    <title>Search PG</title>
 			    </head>
-			    <body onload="doshow();">
+			    <body onload="doshow();" id="content">
 	    <%
         }
 		
@@ -252,7 +257,7 @@
 <title>Search PG</title>
 </head>
 
-<body >
+<body id="content">
 <%} %>
 
 
