@@ -19,6 +19,15 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style1.css">
     <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <% if(!(null == session.getAttribute("snupfail"))&&(session.getAttribute("snupfail").toString().equals("fail")))
+    {
+    	request.getSession().setAttribute("snupfail", "");
+    	%>
+    	  <script type="text/javascript">
+    	alert("Entered EmailId is already registered with someone");
+    	</script>
+    	<%
+    }%>
     <script>
       function validate(){
     	  var a=document.getElementById("name").value;

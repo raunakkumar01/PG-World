@@ -17,6 +17,26 @@
 </style>
 <script type="text/javascript" src="js/material.js"></script>
 <script type="text/javascript" src="js/material.min.js"></script>
+
+    <% if(!(null == session.getAttribute("clfail"))&&(session.getAttribute("clfail").toString().equals("fail")))
+    {
+    	request.getSession().setAttribute("rvfail", "");
+    	%>
+    	  <script type="text/javascript">
+    	alert("Already Exist");
+    	</script>
+    	<%
+    }else if(!(null == session.getAttribute("clfail"))&&(session.getAttribute("clfail").toString().equals("success")))
+    {
+    	request.getSession().setAttribute("rvfail", "");
+    	%>
+    	  <script type="text/javascript">
+    	alert("Added Successfuly");
+    	</script>
+    	<%
+    
+    }%>
+
 <title>ADD PG</title>
 <script>
     var lat1;

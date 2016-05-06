@@ -37,18 +37,7 @@ table {
 </style>
 <script type="text/javascript">
     function validate(){
-   /* var a=document.getElementsByName("audi");
-    var flag=0;
-    for(var i = 0; i < a.length; i++) {
-       if(a[i].checked == true) {
-          flag=1;
-    	  break;
-       }
-     }
-     if(flag===0){
-     alert("Choose one of the gender");
-     return false;
-     }*/
+  
      var b1=document.getElementById("b1").value;
      var p1=document.getElementById("p1").value;
      var b2=document.getElementById("b2").value;
@@ -158,7 +147,7 @@ request.getSession().setAttribute("cat","Houseowner");
 <h3>UPDATE PG DETAILS</h3>
 <ol>
 <li>PGID: <%=ar.get(0).getPGID() %></li>
-<li>ADDRESS<%=ar.get(0).getAddressLine()%></li>
+<li>ADDRESS: <%=ar.get(0).getAddressLine()%></li>
 <li>PINCODE: <%=ar.get(0).getPincode() %></li>
 </ol>
   </div>

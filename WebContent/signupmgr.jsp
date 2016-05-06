@@ -18,8 +18,10 @@ String mail= request.getParameter("user_email");
 String pwd= request.getParameter("user_password");
 String cat=request.getParameter("user_cat");
 int rs=UserManager.register_gen(mail, pwd, name, cat, contact_number);
-if(rs==0)
-	response.sendRedirect("Home.jsp");
+if(rs==0){
+	request.getSession().setAttribute("snupfail", "fail");
+	response.sendRedirect("SignUp.jsp");
+}
 else if (rs==1)
 {
 	request.getSession().setAttribute("cat", cat);

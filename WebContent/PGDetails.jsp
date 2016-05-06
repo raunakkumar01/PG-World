@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.iem.BEAN.PGReview" import= "java.util.Collections"    import="com.iem.BEAN.*"  import="com.iem.DAO.ReviewManager" import="java.util.ArrayList"%>
+	<%-- 
+  - Author: Raunak Kumar
+  - Description:  In this page user is able to see PG details and reviews about the PG
+  --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

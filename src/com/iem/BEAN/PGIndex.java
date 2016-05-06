@@ -1,5 +1,9 @@
 package com.iem.BEAN;
-
+/*
+ * Author: Shamik Kundu
+ * Description: this is a model class providing attributes corresponding to a particular database and also
+ * sql queries to peroform database actions. 
+ */
 public class PGIndex {
 private int pgid;
 private String address;

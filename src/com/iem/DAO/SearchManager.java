@@ -1,5 +1,10 @@
 package com.iem.DAO;
-
+/*
+ * Author: Raunak Kumar
+ * Description: this class provides functions to perform the following operations:
+ * 1. Finds PG wrt the given facilities,budget and gender 
+ */
+ 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,10 +36,7 @@ public class SearchManager {
 		ArrayList<PG> alpg=new ArrayList<PG>();
 		
 		try{
-			/*Connection con=ConnectionFact.dbConnect();
-			String stquery = "Select * from PG";
-			PreparedStatement pst=con.prepareStatement(stquery);			
-			ResultSet rs=pst.executeQuery();*/
+			
 			
 			System.out.println(clgname+"Hilo"+pg_for);
 			

@@ -14,7 +14,7 @@ public class UserManagerTest {
 	@Test
 	public void testAuthenticate() {
 		//fail("Not yet implemented");
-		String unm="sk@m.c",uid="ss";
+		String unm="sk@m.c",uid="shamik";
 		//UserManager rm=new UserManager();
 		String result=UserManager.authenticate(unm, uid);
 		String expResult = "STUDENT";

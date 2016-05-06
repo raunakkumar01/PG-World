@@ -25,14 +25,12 @@ int ww=College.add(clg,address, lat, lng);
 if (ww==1)
 { 
 	System.out.println("Success");
-	//request.getSession().setAttribute("cat","HouseOwner");
-	//request.getSession().setAttribute("mail", unm);
-	//request.getSession().setAttribute("adrs", address);
+	request.getSession().setAttribute("clfail", "success");
 	response.sendRedirect("addcollege.jsp");
 }
 else if(ww==0 || ww==10)
-{   //request.getSession().setAttribute("cat", "HouseOwner");
-	//request.getSession().setAttribute("mail", unm);
+{   
+	request.getSession().setAttribute("clfail", "fail");
 	response.sendRedirect("addcollege.jsp");
 }
 %>

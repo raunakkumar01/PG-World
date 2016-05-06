@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.iem.DAO.RentalManger" %>
+    
+    <%-- 
+  - Author: Shailesh Kumar
+  - Description: redirects user to  same page successful/unsuccessful database deletion
+  --%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

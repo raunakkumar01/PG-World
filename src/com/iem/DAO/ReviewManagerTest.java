@@ -16,9 +16,9 @@ public class ReviewManagerTest {
 		//fail("Not yet implemented");
 		
 		String unm="sk@m.c",uid="108";
-		ReviewManager rm=new ReviewManager();
-		boolean result=rm.checkStudent(unm, uid);
-		boolean expResult = true;
+		//ReviewManager rm=new ReviewManager();
+		int result=ReviewManager.addPGReview(null);
+		int expResult = 1;
         //boolean result = instance.doSomething(me, you);
         assertEquals(expResult, result);
 	}

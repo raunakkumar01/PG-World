@@ -1,5 +1,9 @@
 package com.iem.BEAN;
-
+/*
+ * Author: Raunak Kumar and Shamik Kundu
+ * Description: this is a model class providing attributes corresponding to a particular database and also
+ * sql queries to peroform database actions. 
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
